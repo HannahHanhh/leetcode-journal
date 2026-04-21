@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LeetCode Journal</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="container" id="app">
+
+  <header>
+    <h1>LeetCode Journal</h1>
+    <p class="subtitle">热题 100 · SM-2 遗忘曲线复习调度</p>
+  </header>
+
+  <section>
+    <div class="stats">
+      <div class="stat"><div class="label">Tracked</div><div class="value" id="stat-tracked">—</div></div>
+      <div class="stat"><div class="label">Due today</div><div class="value" id="stat-due">—</div></div>
+      <div class="stat"><div class="label">Mastered</div><div class="value" id="stat-mastered">—</div></div>
+      <div class="stat"><div class="label">Reviews</div><div class="value" id="stat-reviews">—</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>今日复习</h2>
+    <div class="queue" id="today-list"></div>
+  </section>
+
+  <section>
+    <h2>活动热力图 <span style="font-weight:400;color:var(--text-muted);font-size:13px;">· 过去 26 周</span></h2>
+    <div class="heatmap" id="heatmap"></div>
+    <div class="heat-legend">
+      Less
+      <span class="heat-day" data-level="0"></span>
+      <span class="heat-day" data-level="1"></span>
+      <span class="heat-day" data-level="2"></span>
+      <span class="heat-day" data-level="3"></span>
+      <span class="heat-day" data-level="4"></span>
+      More
+    </div>
+  </section>
+
+  <section>
+    <h2>EF 分布</h2>
+    <div class="ef-bars" id="ef-bars"></div>
+    <div class="ef-labels">
+      <span>&lt;1.5</span><span>1.5-1.8</span><span>1.8-2.1</span>
+      <span>2.1-2.4</span><span>2.4-2.7</span><span>≥2.7</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>热题 100 · 按专题</h2>
+    <div id="topics"></div>
+  </section>
+
+  <footer>
+    数据来源 <a href="https://github.com/HannahHanhh/leetcode-journal" target="_blank">HannahHanhh/leetcode-journal</a> ·
+    每次 <code>git push</code> 后自动更新
+  </footer>
+</div>
+
+<script>
+const LEETCODE_URL = (id, slug) => `https://leetcode.com/problems/${slug}/`;
+
+function slugify(title) {
+  return title.toLowerCase()
+    .replace(/'/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+async function load() {
+  const [schedule, hot100] = await Promise.all([
+    fetch("schedule.json?t=" + Date.now()).then(r => r.json()),
+    fetch("hot100.json?t=" + Date.now()).then(r => r.json()),
+  ]);
+  renderStats(schedule);
+  renderToday(schedule);
+  renderHeatmap(schedule);
+  renderEFBars(schedule);
+  renderTopics(hot100, schedule);
+}
+
+function renderStats(schedule) {
+  const cards = Object.values(schedule);
+  const today = new Date().toISOString().slice(0, 10);
+  const tracked = cards.length;
+  const due = cards.filter(c => c.due && c.due <= today).length;
+  const mastered = cards.filter(c => c.reps >= 3 && c.ef >= 2.5).length;
+  const reviews = cards.reduce((s, c) => s + (c.history?.length || 0), 0);
+  document.getElementById("stat-tracked").textContent = tracked;
+  document.getElementById("stat-due").textContent = due;
+  document.getElementById("stat-mastered").textContent = mastered;
+  document.getElementById("stat-reviews").textContent = reviews;
+}
+
+function renderToday(schedule) {
+  const today = new Date().toISOString().slice(0, 10);
+  const due = Object.values(schedule)
+    .filter(c => c.due && c.due <= today)
+    .sort((a, b) => a.due.localeCompare(b.due));
+  const root = document.getElementById("today-list");
+  if (due.length === 0) {
+    root.innerHTML = '<div class="empty">今天没有待复习的题 ✨</div>';
+    return;
+  }
+  root.innerHTML = due.map(c => {
+    const overdueDays = Math.floor(
+      (new Date(today) - new Date(c.due)) / 86400000
+    );
+    const tag = overdueDays > 0
+      ? `<span class="tag overdue">overdue ${overdueDays}d</span>`
+      : `<span class="tag today">today</span>`;
+    return `
+      <div class="card">
+        <div class="id">${c.id}</div>
+        <div class="title">${c.title}</div>
+        <div class="meta">
+          <span>EF ${c.ef.toFixed(2)}</span>
+          <span>reps ${c.reps}</span>
+        </div>
+        ${tag}
+      </div>`;
+  }).join("");
+}
+
+function renderHeatmap(schedule) {
+  // Collect review counts per day from history.
+  const counts = {};
+  for (const c of Object.values(schedule)) {
+    for (const h of c.history || []) {
+      counts[h.date] = (counts[h.date] || 0) + 1;
+    }
+  }
+  // 26 weeks ending today, weeks start on Sunday.
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const end = new Date(today);
+  // Align end to next Saturday so columns are full weeks.
+  end.setDate(end.getDate() + (6 - end.getDay()));
+  const totalDays = 26 * 7;
+  const start = new Date(end);
+  start.setDate(start.getDate() - totalDays + 1);
+
+  const weeks = [];
+  let cur = new Date(start);
+  for (let w = 0; w < 26; w++) {
+    const days = [];
+    for (let d = 0; d < 7; d++) {
+      const iso = cur.toISOString().slice(0, 10);
+      const count = counts[iso] || 0;
+      const future = cur > today;
+      days.push({ iso, count, future });
+      cur.setDate(cur.getDate() + 1);
+    }
+    weeks.push(days);
+  }
+
+  const level = n => {
+    if (n === 0) return 0;
+    if (n === 1) return 1;
+    if (n <= 3) return 2;
+    if (n <= 6) return 3;
+    return 4;
+  };
+
+  const root = document.getElementById("heatmap");
+  root.innerHTML = weeks.map(week => `
+    <div class="heat-week">
+      ${week.map(d => {
+        if (d.future) {
+          return `<div class="heat-day" style="opacity:0.35" title="${d.iso}"></div>`;
+        }
+        return `<div class="heat-day" data-level="${level(d.count)}"
+          title="${d.iso}: ${d.count} review${d.count === 1 ? "" : "s"}"></div>`;
+      }).join("")}
+    </div>
+  `).join("");
+}
+
+function renderEFBars(schedule) {
+  const buckets = [0, 0, 0, 0, 0, 0];
+  const bounds = [1.5, 1.8, 2.1, 2.4, 2.7];
+  for (const c of Object.values(schedule)) {
+    let i = 0;
+    while (i < bounds.length && c.ef >= bounds[i]) i++;
+    buckets[i]++;
+  }
+  const max = Math.max(...buckets, 1);
+  const root = document.getElementById("ef-bars");
+  root.innerHTML = buckets.map(n => `
+    <div class="ef-bar" style="height:${(n / max) * 100}%">
+      ${n > 0 ? `<div class="count">${n}</div>` : ""}
+    </div>
+  `).join("");
+}
+
+function renderTopics(topics, schedule) {
+  const root = document.getElementById("topics");
+  root.innerHTML = topics.map(topic => {
+    const tracked = topic.problems.filter(p => schedule[p.id]).length;
+    const items = topic.problems.map(p => {
+      const card = schedule[p.id];
+      const done = !!card;
+      const status = card
+        ? `EF ${card.ef.toFixed(2)} · reps ${card.reps} · next ${card.due}`
+        : "未开始";
+      return `
+        <li class="problem ${done ? "done" : ""}">
+          <div class="id">${p.id}</div>
+          <div class="title">
+            <a href="${LEETCODE_URL(p.id, slugify(p.title))}" target="_blank">${p.title}</a>
+          </div>
+          <span class="diff ${p.difficulty}">${p.difficulty}</span>
+          <span class="status">${status}</span>
+        </li>`;
+    }).join("");
+    return `
+      <details class="topic" ${tracked > 0 ? "open" : ""}>
+        <summary>
+          ${topic.name}
+          <span class="topic-progress">${tracked} / ${topic.problems.length}</span>
+        </summary>
+        <ul class="problem-list">${items}</ul>
+      </details>`;
+  }).join("");
+}
+
+load();
+</script>
+</body>
+</html>

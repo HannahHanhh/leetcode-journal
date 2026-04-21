@@ -1,0 +1,587 @@
+[
+  {
+    "name": "哈希",
+    "problems": [
+      {
+        "id": "1",
+        "title": "Two Sum",
+        "difficulty": "easy"
+      },
+      {
+        "id": "49",
+        "title": "Group Anagrams",
+        "difficulty": "medium"
+      },
+      {
+        "id": "128",
+        "title": "Longest Consecutive Sequence",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "name": "双指针",
+    "problems": [
+      {
+        "id": "283",
+        "title": "Move Zeroes",
+        "difficulty": "easy"
+      },
+      {
+        "id": "11",
+        "title": "Container With Most Water",
+        "difficulty": "medium"
+      },
+      {
+        "id": "15",
+        "title": "3Sum",
+        "difficulty": "medium"
+      },
+      {
+        "id": "42",
+        "title": "Trapping Rain Water",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "滑动窗口",
+    "problems": [
+      {
+        "id": "3",
+        "title": "Longest Substring Without Repeating Characters",
+        "difficulty": "medium"
+      },
+      {
+        "id": "438",
+        "title": "Find All Anagrams in a String",
+        "difficulty": "medium"
+      },
+      {
+        "id": "76",
+        "title": "Minimum Window Substring",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "子串",
+    "problems": [
+      {
+        "id": "560",
+        "title": "Subarray Sum Equals K",
+        "difficulty": "medium"
+      },
+      {
+        "id": "239",
+        "title": "Sliding Window Maximum",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "普通数组",
+    "problems": [
+      {
+        "id": "53",
+        "title": "Maximum Subarray",
+        "difficulty": "medium"
+      },
+      {
+        "id": "56",
+        "title": "Merge Intervals",
+        "difficulty": "medium"
+      },
+      {
+        "id": "189",
+        "title": "Rotate Array",
+        "difficulty": "medium"
+      },
+      {
+        "id": "238",
+        "title": "Product of Array Except Self",
+        "difficulty": "medium"
+      },
+      {
+        "id": "41",
+        "title": "First Missing Positive",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "矩阵",
+    "problems": [
+      {
+        "id": "73",
+        "title": "Set Matrix Zeroes",
+        "difficulty": "medium"
+      },
+      {
+        "id": "54",
+        "title": "Spiral Matrix",
+        "difficulty": "medium"
+      },
+      {
+        "id": "48",
+        "title": "Rotate Image",
+        "difficulty": "medium"
+      },
+      {
+        "id": "240",
+        "title": "Search a 2D Matrix II",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "name": "链表",
+    "problems": [
+      {
+        "id": "160",
+        "title": "Intersection of Two Linked Lists",
+        "difficulty": "easy"
+      },
+      {
+        "id": "206",
+        "title": "Reverse Linked List",
+        "difficulty": "easy"
+      },
+      {
+        "id": "234",
+        "title": "Palindrome Linked List",
+        "difficulty": "easy"
+      },
+      {
+        "id": "141",
+        "title": "Linked List Cycle",
+        "difficulty": "easy"
+      },
+      {
+        "id": "142",
+        "title": "Linked List Cycle II",
+        "difficulty": "medium"
+      },
+      {
+        "id": "21",
+        "title": "Merge Two Sorted Lists",
+        "difficulty": "easy"
+      },
+      {
+        "id": "2",
+        "title": "Add Two Numbers",
+        "difficulty": "medium"
+      },
+      {
+        "id": "19",
+        "title": "Remove Nth Node From End of List",
+        "difficulty": "medium"
+      },
+      {
+        "id": "24",
+        "title": "Swap Nodes in Pairs",
+        "difficulty": "medium"
+      },
+      {
+        "id": "25",
+        "title": "Reverse Nodes in k-Group",
+        "difficulty": "hard"
+      },
+      {
+        "id": "138",
+        "title": "Copy List with Random Pointer",
+        "difficulty": "medium"
+      },
+      {
+        "id": "148",
+        "title": "Sort List",
+        "difficulty": "medium"
+      },
+      {
+        "id": "23",
+        "title": "Merge k Sorted Lists",
+        "difficulty": "hard"
+      },
+      {
+        "id": "146",
+        "title": "LRU Cache",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "name": "二叉树",
+    "problems": [
+      {
+        "id": "94",
+        "title": "Binary Tree Inorder Traversal",
+        "difficulty": "easy"
+      },
+      {
+        "id": "104",
+        "title": "Maximum Depth of Binary Tree",
+        "difficulty": "easy"
+      },
+      {
+        "id": "226",
+        "title": "Invert Binary Tree",
+        "difficulty": "easy"
+      },
+      {
+        "id": "101",
+        "title": "Symmetric Tree",
+        "difficulty": "easy"
+      },
+      {
+        "id": "543",
+        "title": "Diameter of Binary Tree",
+        "difficulty": "easy"
+      },
+      {
+        "id": "102",
+        "title": "Binary Tree Level Order Traversal",
+        "difficulty": "medium"
+      },
+      {
+        "id": "108",
+        "title": "Convert Sorted Array to BST",
+        "difficulty": "easy"
+      },
+      {
+        "id": "98",
+        "title": "Validate BST",
+        "difficulty": "medium"
+      },
+      {
+        "id": "230",
+        "title": "Kth Smallest Element in BST",
+        "difficulty": "medium"
+      },
+      {
+        "id": "199",
+        "title": "Binary Tree Right Side View",
+        "difficulty": "medium"
+      },
+      {
+        "id": "114",
+        "title": "Flatten Binary Tree to Linked List",
+        "difficulty": "medium"
+      },
+      {
+        "id": "105",
+        "title": "Construct Binary Tree from Preorder and Inorder",
+        "difficulty": "medium"
+      },
+      {
+        "id": "437",
+        "title": "Path Sum III",
+        "difficulty": "medium"
+      },
+      {
+        "id": "236",
+        "title": "Lowest Common Ancestor of a Binary Tree",
+        "difficulty": "medium"
+      },
+      {
+        "id": "124",
+        "title": "Binary Tree Maximum Path Sum",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "图论",
+    "problems": [
+      {
+        "id": "200",
+        "title": "Number of Islands",
+        "difficulty": "medium"
+      },
+      {
+        "id": "994",
+        "title": "Rotting Oranges",
+        "difficulty": "medium"
+      },
+      {
+        "id": "207",
+        "title": "Course Schedule",
+        "difficulty": "medium"
+      },
+      {
+        "id": "208",
+        "title": "Implement Trie (Prefix Tree)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "name": "回溯",
+    "problems": [
+      {
+        "id": "46",
+        "title": "Permutations",
+        "difficulty": "medium"
+      },
+      {
+        "id": "78",
+        "title": "Subsets",
+        "difficulty": "medium"
+      },
+      {
+        "id": "17",
+        "title": "Letter Combinations of a Phone Number",
+        "difficulty": "medium"
+      },
+      {
+        "id": "39",
+        "title": "Combination Sum",
+        "difficulty": "medium"
+      },
+      {
+        "id": "22",
+        "title": "Generate Parentheses",
+        "difficulty": "medium"
+      },
+      {
+        "id": "79",
+        "title": "Word Search",
+        "difficulty": "medium"
+      },
+      {
+        "id": "131",
+        "title": "Palindrome Partitioning",
+        "difficulty": "medium"
+      },
+      {
+        "id": "51",
+        "title": "N-Queens",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "二分查找",
+    "problems": [
+      {
+        "id": "35",
+        "title": "Search Insert Position",
+        "difficulty": "easy"
+      },
+      {
+        "id": "74",
+        "title": "Search a 2D Matrix",
+        "difficulty": "medium"
+      },
+      {
+        "id": "34",
+        "title": "Find First and Last Position of Element in Sorted Array",
+        "difficulty": "medium"
+      },
+      {
+        "id": "33",
+        "title": "Search in Rotated Sorted Array",
+        "difficulty": "medium"
+      },
+      {
+        "id": "153",
+        "title": "Find Minimum in Rotated Sorted Array",
+        "difficulty": "medium"
+      },
+      {
+        "id": "4",
+        "title": "Median of Two Sorted Arrays",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "栈",
+    "problems": [
+      {
+        "id": "20",
+        "title": "Valid Parentheses",
+        "difficulty": "easy"
+      },
+      {
+        "id": "155",
+        "title": "Min Stack",
+        "difficulty": "medium"
+      },
+      {
+        "id": "394",
+        "title": "Decode String",
+        "difficulty": "medium"
+      },
+      {
+        "id": "739",
+        "title": "Daily Temperatures",
+        "difficulty": "medium"
+      },
+      {
+        "id": "84",
+        "title": "Largest Rectangle in Histogram",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "堆",
+    "problems": [
+      {
+        "id": "215",
+        "title": "Kth Largest Element in an Array",
+        "difficulty": "medium"
+      },
+      {
+        "id": "347",
+        "title": "Top K Frequent Elements",
+        "difficulty": "medium"
+      },
+      {
+        "id": "295",
+        "title": "Find Median from Data Stream",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "贪心",
+    "problems": [
+      {
+        "id": "121",
+        "title": "Best Time to Buy and Sell Stock",
+        "difficulty": "easy"
+      },
+      {
+        "id": "55",
+        "title": "Jump Game",
+        "difficulty": "medium"
+      },
+      {
+        "id": "45",
+        "title": "Jump Game II",
+        "difficulty": "medium"
+      },
+      {
+        "id": "763",
+        "title": "Partition Labels",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "name": "动态规划",
+    "problems": [
+      {
+        "id": "70",
+        "title": "Climbing Stairs",
+        "difficulty": "easy"
+      },
+      {
+        "id": "118",
+        "title": "Pascal's Triangle",
+        "difficulty": "easy"
+      },
+      {
+        "id": "198",
+        "title": "House Robber",
+        "difficulty": "medium"
+      },
+      {
+        "id": "279",
+        "title": "Perfect Squares",
+        "difficulty": "medium"
+      },
+      {
+        "id": "322",
+        "title": "Coin Change",
+        "difficulty": "medium"
+      },
+      {
+        "id": "139",
+        "title": "Word Break",
+        "difficulty": "medium"
+      },
+      {
+        "id": "300",
+        "title": "Longest Increasing Subsequence",
+        "difficulty": "medium"
+      },
+      {
+        "id": "152",
+        "title": "Maximum Product Subarray",
+        "difficulty": "medium"
+      },
+      {
+        "id": "416",
+        "title": "Partition Equal Subset Sum",
+        "difficulty": "medium"
+      },
+      {
+        "id": "32",
+        "title": "Longest Valid Parentheses",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "name": "多维 DP",
+    "problems": [
+      {
+        "id": "62",
+        "title": "Unique Paths",
+        "difficulty": "medium"
+      },
+      {
+        "id": "64",
+        "title": "Minimum Path Sum",
+        "difficulty": "medium"
+      },
+      {
+        "id": "5",
+        "title": "Longest Palindromic Substring",
+        "difficulty": "medium"
+      },
+      {
+        "id": "1143",
+        "title": "Longest Common Subsequence",
+        "difficulty": "medium"
+      },
+      {
+        "id": "72",
+        "title": "Edit Distance",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "name": "技巧",
+    "problems": [
+      {
+        "id": "136",
+        "title": "Single Number",
+        "difficulty": "easy"
+      },
+      {
+        "id": "169",
+        "title": "Majority Element",
+        "difficulty": "easy"
+      },
+      {
+        "id": "75",
+        "title": "Sort Colors",
+        "difficulty": "medium"
+      },
+      {
+        "id": "31",
+        "title": "Next Permutation",
+        "difficulty": "medium"
+      },
+      {
+        "id": "287",
+        "title": "Find the Duplicate Number",
+        "difficulty": "medium"
+      }
+    ]
+  }
+]
