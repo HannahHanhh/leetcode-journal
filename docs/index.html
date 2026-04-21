@@ -224,6 +224,26 @@ async function applyGrade(pid, q) {
   }
 }
 
+async function applyRemove(pid) {
+  if (!schedule[pid]) return;
+  const before = schedule[pid];
+  delete schedule[pid];
+  render();
+  if (!getToken()) {
+    setSync("err", "已在本地撤销，但未 push（需配置 token）");
+    return;
+  }
+  setSync("work", `推送 remove: ${pid}...`);
+  try {
+    await putSchedule(schedule, `remove: ${pid.padStart(4, "0")} drop from schedule`);
+    setSync("ok", `已推送 · 撤销 ${pid}`);
+  } catch (e) {
+    schedule[pid] = before;
+    render();
+    setSync("err", "推送失败: " + e.message);
+  }
+}
+
 async function applyAdd(pid, title) {
   if (schedule[pid]) return;
   schedule[pid] = {
@@ -291,10 +311,18 @@ function render() {
   renderTopics();
 }
 
-function gradeBtns(pid, size) {
+const GRADE_LABELS = ["不会", "勉强", "错了", "吃力", "顺畅", "秒杀"];
+function gradeBtns(pid) {
   return `<div class="grades" data-pid="${pid}">
-    ${[0,1,2,3,4,5].map(g => `<button class="grade" data-g="${g}">${g}</button>`).join("")}
+    ${GRADE_LABELS.map((label, g) =>
+      `<button class="grade" data-g="${g}" title="SM-2 grade ${g}">
+        <span class="g-n">${g}</span>${label}
+      </button>`
+    ).join("")}
   </div>`;
+}
+function removeBtn(pid) {
+  return `<button class="remove-btn" data-remove="${pid}" title="撤销调度">✕</button>`;
 }
 
 function renderStats() {
@@ -321,8 +349,9 @@ function renderToday() {
     const tag = overdue > 0
       ? `<span class="tag overdue">overdue ${overdue}d</span>`
       : `<span class="tag today">today</span>`;
+    const cardCls = overdue > 0 ? "card overdue" : "card today-due";
     return `
-      <div class="card">
+      <div class="${cardCls}">
         <div class="id">${c.id}</div>
         <div class="title">${c.title}</div>
         <div class="meta">
@@ -390,7 +419,7 @@ function renderTopics() {
       const card = schedule[p.id];
       const done = !!card;
       const right = done
-        ? `<span class="status">EF ${card.ef.toFixed(2)} · reps ${card.reps} · next ${card.due}</span>${gradeBtns(p.id)}`
+        ? `<span class="status">EF ${card.ef.toFixed(2)} · reps ${card.reps} · next ${card.due}</span>${gradeBtns(p.id)}${removeBtn(p.id)}`
         : `<button class="add-btn" data-add="${p.id}" data-title="${p.title.replace(/"/g, "&quot;")}">+ 加入调度</button>`;
       return `
         <li class="problem ${done ? "done" : ""}">
@@ -419,12 +448,12 @@ document.addEventListener("click", async (e) => {
   if (g) {
     const pid = g.parentElement.dataset.pid;
     const grade = Number(g.dataset.g);
-    // disable all buttons in this row during request
+    g.classList.add("flash");
     g.parentElement.querySelectorAll(".grade").forEach(b => b.disabled = true);
     try {
       await applyGrade(pid, grade);
     } finally {
-      g.parentElement.querySelectorAll(".grade").forEach(b => b.disabled = false);
+      // buttons get re-rendered by applyGrade so no need to re-enable here
     }
     return;
   }
@@ -432,6 +461,12 @@ document.addEventListener("click", async (e) => {
   if (a) {
     a.disabled = true;
     await applyAdd(a.dataset.add, a.dataset.title);
+    return;
+  }
+  const r = e.target.closest(".remove-btn");
+  if (r) {
+    r.disabled = true;
+    await applyRemove(r.dataset.remove);
     return;
   }
 });

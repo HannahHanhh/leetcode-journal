@@ -98,10 +98,23 @@ h2 {
   padding: 12px 16px;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: background 0.1s;
+  border-radius: 8px;
+  transition: all 0.12s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  position: relative;
 }
-.card:hover { background: var(--bg-hover); }
+.card:hover {
+  border-color: #d8d8d4;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.card.overdue {
+  border-left: 3px solid var(--red);
+  padding-left: 13px;
+}
+.card.today-due {
+  border-left: 3px solid var(--accent);
+  padding-left: 13px;
+}
 .card .id {
   font-family: var(--mono);
   color: var(--text-faint);
@@ -190,6 +203,8 @@ details.topic > summary::before {
   line-height: 1;
 }
 details.topic[open] > summary::before { transform: rotate(90deg); }
+details.topic[open] { background: var(--bg-subtle); border-radius: 6px; padding: 10px 12px; }
+details.topic[open] > summary { padding-bottom: 8px; }
 details.topic .topic-progress {
   color: var(--text-muted);
   font-size: 13px;
@@ -323,46 +338,88 @@ footer a { color: var(--text-muted); }
 }
 .btn.primary:hover { opacity: 0.85; }
 
-/* Grade buttons */
+/* Grade buttons — word style, red→yellow→green gradient */
 .grades {
-  display: flex;
-  gap: 3px;
+  display: inline-flex;
+  gap: 2px;
+  background: var(--bg-subtle);
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
 }
 .grade {
-  width: 26px; height: 26px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  border-radius: 4px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
   cursor: pointer;
-  font-family: var(--mono);
+  font-family: var(--font);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  padding: 5px 10px;
   color: var(--text-muted);
-  padding: 0;
-  transition: all 0.1s;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+  line-height: 1.2;
+  min-width: 48px;
 }
-.grade:hover { background: var(--bg-hover); color: var(--text); }
+.grade .g-n {
+  font-family: var(--mono);
+  font-size: 10px;
+  opacity: 0.55;
+  margin-right: 4px;
+}
+.grade:hover { background: var(--bg); box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
 .grade[data-g="0"]:hover, .grade[data-g="1"]:hover, .grade[data-g="2"]:hover {
-  background: #fdebec; color: var(--red); border-color: var(--red);
+  background: #fdebec; color: var(--red);
 }
 .grade[data-g="3"]:hover {
-  background: #fbf3e0; color: var(--yellow); border-color: var(--yellow);
+  background: #fbf3e0; color: var(--yellow);
 }
 .grade[data-g="4"]:hover, .grade[data-g="5"]:hover {
-  background: #e7f3ec; color: var(--green); border-color: var(--green);
+  background: #e7f3ec; color: var(--green);
 }
-.grade:disabled { opacity: 0.4; cursor: not-allowed; }
+.grade:disabled { opacity: 0.35; cursor: wait; }
+.grade.flash {
+  background: var(--text);
+  color: #fff;
+  transform: scale(1.06);
+}
 
 .add-btn {
-  padding: 3px 10px;
+  padding: 5px 12px;
   font-size: 12px;
+  font-weight: 500;
   border: 1px dashed var(--border);
   background: var(--bg);
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   color: var(--text-muted);
+  transition: all 0.1s;
 }
-.add-btn:hover { background: var(--bg-subtle); color: var(--text); border-style: solid; }
+.add-btn:hover {
+  background: #eaf4fc;
+  color: var(--accent);
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+/* Remove (undo schedule) icon */
+.remove-btn {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-faint);
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  margin-left: 4px;
+  transition: all 0.1s;
+}
+.remove-btn:hover { background: #fdebec; color: var(--red); }
+.remove-btn:disabled { opacity: 0.4; cursor: wait; }
 
 /* Modal */
 .modal-bg {
