@@ -125,8 +125,14 @@ h2 {
   flex: 1;
   font-weight: 500;
 }
-.card .title a { color: var(--text); text-decoration: none; }
-.card .title a:hover .title-cn { text-decoration: underline; }
+.queue .card .title a,
+.queue .card .title a:visited,
+.queue .card .title a:active {
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+.queue .card .title a:hover .title-cn { text-decoration: underline; }
+.queue .card .title a:hover .title-en { text-decoration: none; }
 .card .meta {
   font-family: var(--mono);
   font-size: 12px;
@@ -254,8 +260,14 @@ details.topic .topic-progress {
   font-size: 13px;
 }
 .problem .title { flex: 1; }
-.problem .title a { color: var(--text); text-decoration: none; }
+.problem .title a,
+.problem .title a:visited,
+.problem .title a:active {
+  color: var(--text);
+  text-decoration: none;
+}
 .problem .title a:hover .title-cn { text-decoration: underline; }
+.problem .title a:hover .title-en { text-decoration: none; }
 
 .title-cn { font-weight: 500; display: block; }
 .title-en {
