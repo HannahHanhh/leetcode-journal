@@ -255,12 +255,13 @@ details.topic .topic-progress {
 .problem .title a { color: var(--text); text-decoration: none; }
 .problem .title a:hover .title-cn { text-decoration: underline; }
 
-.title-cn { font-weight: 500; }
+.title-cn { font-weight: 500; display: block; }
 .title-en {
   color: var(--text-faint);
   font-size: 12px;
-  margin-left: 6px;
   font-weight: 400;
+  display: block;
+  margin-top: 2px;
 }
 .card .title-en { font-size: 11px; }
 .problem.done .title { color: var(--text-muted); }

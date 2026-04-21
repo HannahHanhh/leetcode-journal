@@ -98,7 +98,8 @@
 const REPO = "HannahHanhh/leetcode-journal";
 const FILE_PATH = "review/schedule.json";
 const API_FILE = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`;
-const LEETCODE_URL = (slug) => `https://leetcode.com/problems/${slug}/`;
+const LEETCODE_URL = (slug) =>
+  `https://leetcode.cn/problems/${slug}/?envType=study-plan-v2&envId=top-100-liked`;
 
 // ---------- state ----------
 let schedule = {};       // id -> card
