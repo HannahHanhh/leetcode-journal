@@ -17,6 +17,16 @@
       }
     ]
   },
+  "11": {
+    "id": "11",
+    "title": "Container With Most Water",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-21",
+    "added": "2026-04-21",
+    "history": []
+  },
   "49": {
     "id": "49",
     "title": "Group Anagrams",
@@ -56,10 +66,10 @@
   "283": {
     "id": "283",
     "title": "Move Zeroes",
-    "ef": 2.2199999999999998,
-    "reps": 2,
-    "interval": 6,
-    "due": "2026-04-27",
+    "ef": 2.0799999999999996,
+    "reps": 3,
+    "interval": 13,
+    "due": "2026-05-04",
     "added": "2026-04-21",
     "history": [
       {
@@ -75,6 +85,13 @@
         "ef": 2.22,
         "reps": 2,
         "interval": 6
+      },
+      {
+        "date": "2026-04-21",
+        "grade": 3,
+        "ef": 2.08,
+        "reps": 3,
+        "interval": 13
       }
     ]
   }
