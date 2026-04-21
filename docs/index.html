@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeetCode Journal</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2337352f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ELJ%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -99,6 +100,7 @@ const LEETCODE_URL = (slug) => `https://leetcode.com/problems/${slug}/`;
 // ---------- state ----------
 let schedule = {};       // id -> card
 let hot100 = [];         // topics
+let titleCN = {};        // id -> Chinese title
 let fileSha = null;      // GitHub file SHA for writes
 
 // ---------- utils ----------
@@ -277,6 +279,8 @@ async function loadInitial() {
   ]);
   schedule = s;
   hot100 = h;
+  titleCN = {};
+  for (const t of hot100) for (const p of t.problems) titleCN[p.id] = p.title_cn || p.title;
   render();
   refreshSyncIdle();
   // If token present, fetch fresh copy + sha from API so we can write later.
@@ -355,10 +359,14 @@ function renderToday() {
       ? `<span class="tag overdue">overdue ${overdue}d</span>`
       : `<span class="tag today">today</span>`;
     const cardCls = overdue > 0 ? "card overdue" : "card today-due";
+    const cn = titleCN[c.id];
+    const titleHtml = cn
+      ? `<span class="title-cn">${cn}</span> <span class="title-en">${c.title}</span>`
+      : c.title;
     return `
       <div class="${cardCls}">
         <div class="id">${c.id}</div>
-        <div class="title">${c.title}</div>
+        <div class="title">${titleHtml}</div>
         <div class="meta">
           <span>EF ${c.ef.toFixed(2)}</span>
           <span>reps ${c.reps}</span>
@@ -426,11 +434,15 @@ function renderTopics() {
       const right = done
         ? `<span class="status">EF ${card.ef.toFixed(2)} · reps ${card.reps} · next ${card.due}</span>${gradeBtns(p.id)}${removeBtn(p.id)}`
         : `<button class="add-btn" data-add="${p.id}" data-title="${p.title.replace(/"/g, "&quot;")}">+ 加入调度</button>`;
+      const cn = p.title_cn || p.title;
       return `
         <li class="problem ${done ? "done" : ""}">
           <div class="id">${p.id}</div>
           <div class="title">
-            <a href="${LEETCODE_URL(slugify(p.title))}" target="_blank">${p.title}</a>
+            <a href="${LEETCODE_URL(slugify(p.title))}" target="_blank">
+              <span class="title-cn">${cn}</span>
+              <span class="title-en">${p.title}</span>
+            </a>
           </div>
           <span class="diff ${p.difficulty}">${p.difficulty}</span>
           ${right}

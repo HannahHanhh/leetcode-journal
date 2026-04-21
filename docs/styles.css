@@ -233,7 +233,16 @@ details.topic .topic-progress {
 }
 .problem .title { flex: 1; }
 .problem .title a { color: var(--text); text-decoration: none; }
-.problem .title a:hover { text-decoration: underline; }
+.problem .title a:hover .title-cn { text-decoration: underline; }
+
+.title-cn { font-weight: 500; }
+.title-en {
+  color: var(--text-faint);
+  font-size: 12px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+.card .title-en { font-size: 11px; }
 .problem.done .title { color: var(--text-muted); }
 .problem .status {
   font-size: 11px;
