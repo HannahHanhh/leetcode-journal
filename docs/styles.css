@@ -125,6 +125,8 @@ h2 {
   flex: 1;
   font-weight: 500;
 }
+.card .title a { color: var(--text); text-decoration: none; }
+.card .title a:hover .title-cn { text-decoration: underline; }
 .card .meta {
   font-family: var(--mono);
   font-size: 12px;

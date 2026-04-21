@@ -375,14 +375,17 @@ function renderToday() {
       ? `<span class="tag overdue">overdue ${overdue}d</span>`
       : `<span class="tag today">today</span>`;
     const cardCls = overdue > 0 ? "card overdue" : "card today-due";
-    const cn = titleCN[c.id];
-    const titleHtml = cn
-      ? `<span class="title-cn">${cn}</span> <span class="title-en">${c.title}</span>`
-      : c.title;
+    const cn = titleCN[c.id] || c.title;
+    const href = LEETCODE_URL(slugify(c.title));
     return `
       <div class="${cardCls}">
         <div class="id">${c.id}</div>
-        <div class="title">${titleHtml}</div>
+        <div class="title">
+          <a href="${href}" target="_blank">
+            <span class="title-cn">${cn}</span>
+            <span class="title-en">${c.title}</span>
+          </a>
+        </div>
         <div class="meta">
           <span>EF ${c.ef.toFixed(2)}</span>
           <span>reps ${c.reps}</span>
