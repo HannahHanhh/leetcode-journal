@@ -39,7 +39,10 @@
 
   <section>
     <h2>活动热力图 <span style="font-weight:400;color:var(--text-muted);font-size:13px;">· 过去 26 周</span></h2>
-    <div class="heatmap" id="heatmap"></div>
+    <div class="heatmap-wrap">
+      <div class="heatmap-months" id="heatmap-months"></div>
+      <div class="heatmap" id="heatmap"></div>
+    </div>
     <div class="heat-legend">
       Less
       <span class="heat-day" data-level="0"></span>
@@ -394,12 +397,24 @@ function renderHeatmap() {
     const days = [];
     for (let d = 0; d < 7; d++) {
       const iso = cur.toISOString().slice(0, 10);
-      days.push({ iso, count: counts[iso] || 0, future: cur > t });
+      days.push({ iso, count: counts[iso] || 0, future: cur > t, date: new Date(cur) });
       cur.setDate(cur.getDate() + 1);
     }
     weeks.push(days);
   }
   const level = n => n === 0 ? 0 : n === 1 ? 1 : n <= 3 ? 2 : n <= 6 ? 3 : 4;
+
+  // Month labels: place a label at the first week whose Sunday is in a new month.
+  const monthNames = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+  let lastMonth = -1;
+  const labels = weeks.map(wk => {
+    const m = wk[0].date.getMonth();
+    if (m !== lastMonth) { lastMonth = m; return monthNames[m]; }
+    return "";
+  });
+  $("heatmap-months").innerHTML = labels.map(l =>
+    `<div class="m" style="flex:1 1 0;min-width:0">${l}</div>`
+  ).join("");
 
   $("heatmap").innerHTML = weeks.map(wk => `
     <div class="heat-week">

@@ -147,21 +147,36 @@ h2 {
 }
 
 /* Heatmap */
+.heatmap-wrap { width: 100%; }
+.heatmap-months {
+  display: flex;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  padding-left: 2px;
+}
+.heatmap-months .m {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+}
 .heatmap {
   display: flex;
-  gap: 3px;
-  overflow-x: auto;
-  padding: 4px 0;
+  gap: 4px;
+  padding: 2px 0;
+  width: 100%;
 }
 .heat-week {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
+  flex: 1 1 0;
+  min-width: 0;
 }
 .heat-day {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
   background: var(--heat-0);
 }
 .heat-day[data-level="1"] { background: var(--heat-1); }
@@ -177,7 +192,12 @@ h2 {
   justify-content: flex-end;
   margin-top: 8px;
 }
-.heat-legend .heat-day { width: 10px; height: 10px; }
+.heat-legend .heat-day {
+  width: 10px !important;
+  height: 10px !important;
+  aspect-ratio: auto;
+  flex: 0 0 auto;
+}
 
 /* Topic list */
 details.topic {
