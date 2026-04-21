@@ -34,5 +34,23 @@
         "interval": 1
       }
     ]
+  },
+  "128": {
+    "id": "128",
+    "title": "Longest Consecutive Sequence",
+    "ef": 2.1799999999999997,
+    "reps": 0,
+    "interval": 1,
+    "due": "2026-04-23",
+    "added": "2026-04-22",
+    "history": [
+      {
+        "date": "2026-04-22",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
   }
 }
