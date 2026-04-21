@@ -156,5 +156,15 @@
         "interval": 13
       }
     ]
+  },
+  "438": {
+    "id": "438",
+    "title": "Find All Anagrams in a String",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-21",
+    "added": "2026-04-21",
+    "history": []
   }
 }
