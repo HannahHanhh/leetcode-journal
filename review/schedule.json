@@ -56,10 +56,10 @@
   "283": {
     "id": "283",
     "title": "Move Zeroes",
-    "ef": 2.36,
-    "reps": 1,
-    "interval": 1,
-    "due": "2026-04-22",
+    "ef": 2.2199999999999998,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-04-27",
     "added": "2026-04-21",
     "history": [
       {
@@ -68,6 +68,13 @@
         "ef": 2.36,
         "reps": 1,
         "interval": 1
+      },
+      {
+        "date": "2026-04-21",
+        "grade": 3,
+        "ef": 2.22,
+        "reps": 2,
+        "interval": 6
       }
     ]
   }
