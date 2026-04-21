@@ -122,9 +122,13 @@ h2 {
   font-size: 13px;
 }
 .card .title {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   font-weight: 500;
 }
+.card .meta { white-space: nowrap; flex-shrink: 0; }
+.card .tag { flex-shrink: 0; }
+.card .grades { flex-shrink: 0; }
 .queue .card .title a,
 .queue .card .title a:visited,
 .queue .card .title a:active {
@@ -269,15 +273,22 @@ details.topic .topic-progress {
 .problem .title a:hover .title-cn { text-decoration: underline; }
 .problem .title a:hover .title-en { text-decoration: none; }
 
-.title-cn { font-weight: 500; display: block; }
+.title-cn {
+  font-weight: 500;
+  display: block;
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
 .title-en {
-  color: var(--text-faint);
+  color: var(--text-faint) !important;
   font-size: 12px;
   font-weight: 400;
   display: block;
   margin-top: 2px;
+  text-decoration: none !important;
 }
 .card .title-en { font-size: 11px; }
+a:hover .title-cn { text-decoration: underline !important; }
 .problem.done .title { color: var(--text-muted); }
 .problem .status {
   font-size: 11px;
