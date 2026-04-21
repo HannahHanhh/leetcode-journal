@@ -312,11 +312,18 @@ function render() {
 }
 
 const GRADE_LABELS = ["不会", "勉强", "错了", "吃力", "顺畅", "秒杀"];
+function lastGrade(pid) {
+  const c = schedule[pid];
+  if (!c || !c.history || c.history.length === 0) return null;
+  return c.history[c.history.length - 1].grade;
+}
 function gradeBtns(pid) {
+  const last = lastGrade(pid);
   return `<div class="grades" data-pid="${pid}">
-    ${GRADE_LABELS.map((label, g) =>
-      `<button class="grade" data-g="${g}" data-label="${g} · ${label}">${g}</button>`
-    ).join("")}
+    ${GRADE_LABELS.map((label, g) => {
+      const cls = "grade" + (g === last ? " last" : "");
+      return `<button class="${cls}" data-g="${g}" data-label="${g} · ${label}">${g}</button>`;
+    }).join("")}
   </div>`;
 }
 function removeBtn(pid) {

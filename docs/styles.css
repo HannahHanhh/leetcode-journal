@@ -380,6 +380,21 @@ footer a { color: var(--text-muted); }
   transform: scale(1.08);
 }
 
+/* Last-chosen grade stays highlighted */
+.grade.last {
+  box-shadow: inset 0 0 0 1.5px currentColor;
+  font-weight: 700;
+}
+.grade.last[data-g="0"], .grade.last[data-g="1"], .grade.last[data-g="2"] {
+  background: #fdebec; color: var(--red);
+}
+.grade.last[data-g="3"] {
+  background: #fbf3e0; color: var(--yellow);
+}
+.grade.last[data-g="4"], .grade.last[data-g="5"] {
+  background: #e7f3ec; color: var(--green);
+}
+
 /* Tooltip above grade button on hover */
 .grade::after {
   content: attr(data-label);
