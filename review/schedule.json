@@ -52,5 +52,15 @@
         "interval": 1
       }
     ]
+  },
+  "283": {
+    "id": "283",
+    "title": "Move Zeroes",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-21",
+    "added": "2026-04-21",
+    "history": []
   }
 }
