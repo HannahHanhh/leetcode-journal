@@ -320,7 +320,7 @@ function gradeBtns(pid) {
   </div>`;
 }
 function removeBtn(pid) {
-  return `<button class="remove-btn" data-remove="${pid}" title="撤销调度">✕</button>`;
+  return `<button class="remove-btn" data-remove="${pid}" aria-label="撤销调度">✕</button>`;
 }
 
 function renderStats() {
