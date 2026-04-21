@@ -14,6 +14,7 @@
     <span class="sync-status" id="sync-status">
       <span class="sync-dot" id="sync-dot"></span><span id="sync-text">未配置 token（只读模式）</span>
     </span>
+    <span class="today-indicator" id="today-indicator"></span>
     <button class="btn" id="btn-token">设置 Token</button>
     <button class="btn" id="btn-reload" title="拉取最新数据">⟳</button>
   </div>
@@ -109,7 +110,16 @@ let fileSha = null;      // GitHub file SHA for writes
 
 // ---------- utils ----------
 const $ = id => document.getElementById(id);
-const today = () => new Date().toISOString().slice(0, 10);
+function localDate(d) {
+  // Local-timezone YYYY-MM-DD (toISOString returns UTC, which drifts for users
+  // east/west of UTC — e.g. Australia gets "yesterday" until 10-11am local).
+  d = d || new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+const today = () => localDate();
 
 function slugify(title) {
   return title.toLowerCase()
@@ -138,7 +148,7 @@ function gradeCard(card, q, date) {
   card.ef = Math.max(1.3, card.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
   const next = new Date(date);
   next.setDate(next.getDate() + card.interval);
-  card.due = next.toISOString().slice(0, 10);
+  card.due = localDate(next);
   card.history = card.history || [];
   card.history.push({
     date, grade: q,
@@ -317,6 +327,8 @@ function render() {
   renderHeatmap();
   renderEFBars();
   renderTopics();
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  $("today-indicator").textContent = `今天 ${today()} · ${tz}`;
 }
 
 const GRADE_LABELS = ["不会", "勉强", "错了", "吃力", "顺畅", "秒杀"];
@@ -397,7 +409,7 @@ function renderHeatmap() {
   for (let w = 0; w < 26; w++) {
     const days = [];
     for (let d = 0; d < 7; d++) {
-      const iso = cur.toISOString().slice(0, 10);
+      const iso = localDate(cur);
       days.push({ iso, count: counts[iso] || 0, future: cur > t, date: new Date(cur) });
       cur.setDate(cur.getDate() + 1);
     }

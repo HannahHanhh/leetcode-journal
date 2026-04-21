@@ -338,6 +338,12 @@ footer a { color: var(--text-muted); }
   font-size: 13px;
 }
 .sync-status { color: var(--text-muted); flex: 1; }
+.today-indicator {
+  color: var(--text-faint);
+  font-size: 12px;
+  font-family: var(--mono);
+  margin-right: 8px;
+}
 .sync-status.ok { color: var(--green); }
 .sync-status.err { color: var(--red); }
 .sync-status.work { color: var(--accent); }
