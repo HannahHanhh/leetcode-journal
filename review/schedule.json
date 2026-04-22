@@ -188,10 +188,10 @@
   "438": {
     "id": "438",
     "title": "Find All Anagrams in a String",
-    "ef": 1.96,
-    "reps": 0,
+    "ef": 1.82,
+    "reps": 1,
     "interval": 1,
-    "due": "2026-04-22",
+    "due": "2026-04-23",
     "added": "2026-04-21",
     "history": [
       {
@@ -199,6 +199,13 @@
         "grade": 1,
         "ef": 1.96,
         "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 3,
+        "ef": 1.82,
+        "reps": 1,
         "interval": 1
       }
     ]
