@@ -227,5 +227,15 @@
         "interval": 1
       }
     ]
+  },
+  "560": {
+    "id": "560",
+    "title": "Subarray Sum Equals K",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-22",
+    "added": "2026-04-22",
+    "history": []
   }
 }
