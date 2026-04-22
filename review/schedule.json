@@ -138,12 +138,20 @@
   "76": {
     "id": "76",
     "title": "Minimum Window Substring",
-    "ef": 2.5,
+    "ef": 1.96,
     "reps": 0,
-    "interval": 0,
-    "due": "2026-04-22",
+    "interval": 1,
+    "due": "2026-04-23",
     "added": "2026-04-22",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-22",
+        "grade": 1,
+        "ef": 1.96,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
   },
   "128": {
     "id": "128",
