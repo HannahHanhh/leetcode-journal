@@ -138,12 +138,20 @@
   "53": {
     "id": "53",
     "title": "Maximum Subarray",
-    "ef": 2.5,
+    "ef": 2.1799999999999997,
     "reps": 0,
-    "interval": 0,
-    "due": "2026-04-23",
+    "interval": 1,
+    "due": "2026-04-24",
     "added": "2026-04-23",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-23",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
   },
   "76": {
     "id": "76",
