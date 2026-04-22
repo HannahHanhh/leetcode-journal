@@ -95,10 +95,10 @@
   "42": {
     "id": "42",
     "title": "Trapping Rain Water",
-    "ef": 2.5,
-    "reps": 1,
-    "interval": 1,
-    "due": "2026-04-22",
+    "ef": 2.6,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-04-28",
     "added": "2026-04-21",
     "history": [
       {
@@ -107,6 +107,13 @@
         "ef": 2.5,
         "reps": 1,
         "interval": 1
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 5,
+        "ef": 2.6,
+        "reps": 2,
+        "interval": 6
       }
     ]
   },
