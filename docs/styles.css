@@ -124,6 +124,12 @@ h2 {
   flex-direction: column;
   gap: 8px;
 }
+#today-list .problem-list {
+  background: var(--bg-subtle);
+  border-radius: var(--radius);
+  padding: 4px 12px;
+  margin: 0;
+}
 .card {
   display: flex;
   align-items: center;
