@@ -26,10 +26,10 @@
 
   <section>
     <div class="stats">
-      <div class="stat"><div class="label">Tracked</div><div class="value" id="stat-tracked">—</div></div>
-      <div class="stat"><div class="label">Due today</div><div class="value" id="stat-due">—</div></div>
-      <div class="stat"><div class="label">Mastered</div><div class="value" id="stat-mastered">—</div></div>
-      <div class="stat"><div class="label">Reviews</div><div class="value" id="stat-reviews">—</div></div>
+      <button class="stat" data-stat="tracked"><div class="label">Tracked</div><div class="value" id="stat-tracked">—</div></button>
+      <button class="stat" data-stat="due"><div class="label">Due today</div><div class="value" id="stat-due">—</div></button>
+      <button class="stat" data-stat="mastered"><div class="label">Mastered</div><div class="value" id="stat-mastered">—</div></button>
+      <button class="stat" data-stat="reviews"><div class="label">Reviews</div><div class="value" id="stat-reviews">—</div></button>
     </div>
   </section>
 
@@ -73,6 +73,14 @@
     数据来源 <a href="https://github.com/HannahHanhh/leetcode-journal" target="_blank">HannahHanhh/leetcode-journal</a> ·
     评分按钮会直接写回仓库，约 30s 后 Action 重新部署
   </footer>
+</div>
+
+<div class="modal-bg" id="detail-modal-bg">
+  <div class="modal modal-detail">
+    <button class="modal-close" id="detail-close" aria-label="关闭">✕</button>
+    <h3 id="detail-title"></h3>
+    <div class="detail-list" id="detail-list"></div>
+  </div>
 </div>
 
 <div class="modal-bg" id="modal-bg">
@@ -528,6 +536,124 @@ document.addEventListener("click", async (e) => {
     r.disabled = true;
     await applyRemove(r.dataset.remove);
     return;
+  }
+});
+
+// ---------- detail modal ----------
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+function problemRow(c, extra) {
+  const cn = titleCN[c.id] || c.title;
+  const href = LEETCODE_URL(slugify(c.title));
+  return `
+    <a class="detail-row" href="${href}" target="_blank">
+      <div class="detail-id">${escapeHTML(c.id)}</div>
+      <div class="detail-title">
+        <span class="title-cn">${escapeHTML(cn)}</span>
+        <span class="title-en">${escapeHTML(c.title)}</span>
+      </div>
+      <div class="detail-meta">${extra}</div>
+    </a>`;
+}
+
+function buildDetailHTML(kind) {
+  const t = today();
+  const cards = Object.values(schedule);
+  if (kind === "tracked") {
+    const rows = cards.slice().sort((a, b) => a.due.localeCompare(b.due));
+    if (rows.length === 0) return `<div class="detail-empty">还没有题加入调度</div>`;
+    return rows.map(c =>
+      problemRow(c, `EF ${c.ef.toFixed(2)} · reps ${c.reps} · next ${c.due}`)
+    ).join("");
+  }
+  if (kind === "due") {
+    const rows = cards.filter(c => c.due && c.due <= t)
+      .sort((a, b) => a.due.localeCompare(b.due));
+    if (rows.length === 0) return `<div class="detail-empty">今天没有待复习的题 ✨</div>`;
+    return rows.map(c => {
+      const overdue = Math.floor((new Date(t) - new Date(c.due)) / 86400000);
+      const tag = overdue > 0 ? `overdue ${overdue}d` : `today`;
+      return problemRow(c, `${tag} · EF ${c.ef.toFixed(2)} · reps ${c.reps}`);
+    }).join("");
+  }
+  if (kind === "mastered") {
+    const rows = cards.filter(c => c.reps >= 3 && c.ef >= 2.5)
+      .sort((a, b) => b.ef - a.ef);
+    if (rows.length === 0) return `<div class="detail-empty">还没有题达到 mastered（reps≥3 且 EF≥2.5）</div>`;
+    return rows.map(c =>
+      problemRow(c, `EF ${c.ef.toFixed(2)} · reps ${c.reps} · next ${c.due}`)
+    ).join("");
+  }
+  if (kind === "reviews") {
+    const all = [];
+    for (const c of cards) {
+      for (const h of (c.history || [])) {
+        all.push({ id: c.id, title: c.title, ...h });
+      }
+    }
+    all.sort((a, b) => b.date.localeCompare(a.date));
+    if (all.length === 0) return `<div class="detail-empty">还没有评分记录</div>`;
+    const shown = all.slice(0, 30);
+    const more = all.length > shown.length
+      ? `<div class="detail-more">显示最近 ${shown.length} / ${all.length} 条</div>`
+      : "";
+    const rows = shown.map(r => {
+      const cn = titleCN[r.id] || r.title;
+      const href = LEETCODE_URL(slugify(r.title));
+      const tone =
+        r.grade <= 2 ? "g-low" : r.grade === 3 ? "g-mid" : "g-high";
+      return `
+        <a class="detail-row" href="${href}" target="_blank">
+          <div class="detail-id">${escapeHTML(r.id)}</div>
+          <div class="detail-title">
+            <span class="title-cn">${escapeHTML(cn)}</span>
+            <span class="title-en">${escapeHTML(r.title)}</span>
+          </div>
+          <div class="detail-meta">
+            <span class="grade-pill ${tone}">${r.grade}</span>
+            <span>${r.date}</span>
+            <span>EF ${r.ef.toFixed ? r.ef.toFixed(2) : Number(r.ef).toFixed(2)}</span>
+          </div>
+        </a>`;
+    }).join("");
+    return rows + more;
+  }
+  return "";
+}
+
+const STAT_TITLE = {
+  tracked: "Tracked · 已加入调度",
+  due: "Due Today · 待复习",
+  mastered: "Mastered · 已掌握",
+  reviews: "Reviews · 评分历史",
+};
+
+function openDetail(kind) {
+  $("detail-title").textContent = STAT_TITLE[kind] || kind;
+  $("detail-list").innerHTML = buildDetailHTML(kind);
+  $("detail-modal-bg").classList.add("open");
+}
+
+document.addEventListener("click", (e) => {
+  const stat = e.target.closest(".stat");
+  if (stat && stat.dataset.stat) {
+    openDetail(stat.dataset.stat);
+  }
+});
+$("detail-close").addEventListener("click", () =>
+  $("detail-modal-bg").classList.remove("open")
+);
+$("detail-modal-bg").addEventListener("click", (e) => {
+  if (e.target === $("detail-modal-bg")) $("detail-modal-bg").classList.remove("open");
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    $("detail-modal-bg").classList.remove("open");
+    $("modal-bg").classList.remove("open");
   }
 });
 
