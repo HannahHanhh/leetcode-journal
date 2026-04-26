@@ -248,12 +248,20 @@
   "73": {
     "id": "73",
     "title": "Set Matrix Zeroes",
-    "ef": 2.5,
+    "ef": 2.1799999999999997,
     "reps": 0,
-    "interval": 0,
-    "due": "2026-04-27",
+    "interval": 1,
+    "due": "2026-04-28",
     "added": "2026-04-27",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-27",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
   },
   "76": {
     "id": "76",
