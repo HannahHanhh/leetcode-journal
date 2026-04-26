@@ -456,9 +456,22 @@ function renderEFBars() {
     </div>`).join("");
 }
 
+// Remember which topic panels the user has open across re-renders.
+// Defaults to "open if any problem is tracked" the first time we render.
+const topicOpen = {};
+let topicOpenInit = false;
+
 function renderTopics() {
+  if (!topicOpenInit) {
+    for (const t of hot100) {
+      const trackedCount = t.problems.filter(p => schedule[p.id]).length;
+      topicOpen[t.name] = trackedCount > 0;
+    }
+    topicOpenInit = true;
+  }
   $("topics").innerHTML = hot100.map(topic => {
     const tracked = topic.problems.filter(p => schedule[p.id]).length;
+    const open = topicOpen[topic.name];
     const items = topic.problems.map(p => {
       const card = schedule[p.id];
       const done = !!card;
@@ -480,7 +493,7 @@ function renderTopics() {
         </li>`;
     }).join("");
     return `
-      <details class="topic" ${tracked > 0 ? "open" : ""}>
+      <details class="topic" data-topic="${topic.name}" ${open ? "open" : ""}>
         <summary>
           ${topic.name}
           <span class="topic-progress">${tracked} / ${topic.problems.length}</span>
@@ -488,6 +501,13 @@ function renderTopics() {
         <ul class="problem-list">${items}</ul>
       </details>`;
   }).join("");
+
+  // Sync DOM toggle events back into our state so re-renders preserve it.
+  $("topics").querySelectorAll("details.topic").forEach(d => {
+    d.addEventListener("toggle", () => {
+      topicOpen[d.dataset.topic] = d.open;
+    });
+  });
 }
 
 // ---------- event delegation ----------
