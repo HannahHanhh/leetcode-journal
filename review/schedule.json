@@ -281,11 +281,19 @@
     "id": "189",
     "title": "Rotate Array",
     "ef": 2.5,
-    "reps": 0,
-    "interval": 0,
-    "due": "2026-04-26",
+    "reps": 1,
+    "interval": 1,
+    "due": "2026-04-27",
     "added": "2026-04-26",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 2.5,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
   },
   "239": {
     "id": "239",
