@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeetCode Journal</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2337352f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ELJ%3C/text%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=15" />
+<link rel="stylesheet" href="styles.css?v=16" />
 </head>
 <body>
 <div class="container" id="app">
@@ -414,16 +414,15 @@ function renderToday() {
     root.innerHTML = '<div class="empty">今天没有待复习的题 ✨</div>';
     return;
   }
-  root.innerHTML = due.map(c => {
+  root.innerHTML = `<ul class="problem-list">${due.map(c => {
     const overdue = Math.floor((new Date(t) - new Date(c.due)) / 86400000);
     const tag = overdue > 0
-      ? `<span class="tag overdue">overdue ${overdue}d</span>`
-      : `<span class="tag today">today</span>`;
-    const cardCls = overdue > 0 ? "card overdue" : "card today-due";
+      ? `<span class="tag overdue">逾期 ${overdue}d</span>`
+      : `<span class="tag today">今天</span>`;
     const cn = titleCN[c.id] || c.title;
     const href = LEETCODE_URL(slugify(c.title));
     return `
-      <div class="${cardCls}">
+      <li class="problem done">
         <div class="id">${c.id}</div>
         <div class="title">
           <a href="${href}" target="_blank">
@@ -431,14 +430,10 @@ function renderToday() {
             <span class="title-en">${c.title}</span>
           </a>
         </div>
-        <div class="meta">
-          <span>EF ${c.ef.toFixed(2)}</span>
-          <span>reps ${c.reps}</span>
-        </div>
-        ${tag}
+        <span class="status">${tag} · reps ${c.reps}</span>
         ${gradeBtns(c.id)}
-      </div>`;
-  }).join("");
+      </li>`;
+  }).join("")}</ul>`;
 }
 
 function renderHeatmap() {
