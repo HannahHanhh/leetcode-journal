@@ -475,10 +475,20 @@ function renderEFBars() {
 }
 
 // Remember which topic panels the user has opened during this page session.
-// All panels start collapsed on page load.
+// On first render, auto-open the first partially-tracked topic so the user
+// lands on what they're currently working through.
 const topicOpen = {};
+let topicAutoOpenDone = false;
 
 function renderTopics() {
+  if (!topicAutoOpenDone) {
+    const partial = hot100.find(t => {
+      const tracked = t.problems.filter(p => schedule[p.id]).length;
+      return tracked > 0 && tracked < t.problems.length;
+    });
+    if (partial) topicOpen[partial.name] = true;
+    topicAutoOpenDone = true;
+  }
   $("topics").innerHTML = hot100.map(topic => {
     const tracked = topic.problems.filter(p => schedule[p.id]).length;
     const open = !!topicOpen[topic.name];
