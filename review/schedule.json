@@ -123,12 +123,20 @@
   "41": {
     "id": "41",
     "title": "First Missing Positive",
-    "ef": 2.5,
-    "reps": 0,
-    "interval": 0,
-    "due": "2026-04-26",
+    "ef": 2.36,
+    "reps": 1,
+    "interval": 1,
+    "due": "2026-04-27",
     "added": "2026-04-26",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 2.36,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
   },
   "42": {
     "id": "42",
