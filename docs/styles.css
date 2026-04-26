@@ -279,7 +279,7 @@ h2 {
 }
 
 /* Collapsible section wrapper that mimics <section> styling */
-.collapsible-section { margin: 32px 0; }
+.collapsible-section { margin: 0 0 32px; }
 .collapsible-section > summary {
   list-style: none;
   cursor: pointer;
