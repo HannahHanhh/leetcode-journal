@@ -234,10 +234,10 @@
   "239": {
     "id": "239",
     "title": "Sliding Window Maximum",
-    "ef": 1.96,
-    "reps": 0,
+    "ef": 1.82,
+    "reps": 1,
     "interval": 1,
-    "due": "2026-04-23",
+    "due": "2026-04-27",
     "added": "2026-04-22",
     "history": [
       {
@@ -245,6 +245,13 @@
         "grade": 1,
         "ef": 1.96,
         "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 1.82,
+        "reps": 1,
         "interval": 1
       }
     ]
