@@ -2,10 +2,10 @@
   "1": {
     "id": "1",
     "title": "Two Sum",
-    "ef": 2.28,
-    "reps": 1,
-    "interval": 1,
-    "due": "2026-04-24",
+    "ef": 2.38,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-05-02",
     "added": "2026-04-22",
     "history": [
       {
@@ -21,6 +21,13 @@
         "ef": 2.28,
         "reps": 1,
         "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.38,
+        "reps": 2,
+        "interval": 6
       }
     ]
   },
