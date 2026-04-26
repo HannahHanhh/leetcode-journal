@@ -120,6 +120,16 @@
       }
     ]
   },
+  "41": {
+    "id": "41",
+    "title": "First Missing Positive",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-26",
+    "added": "2026-04-26",
+    "history": []
+  },
   "42": {
     "id": "42",
     "title": "Trapping Rain Water",
