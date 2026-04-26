@@ -245,6 +245,16 @@
       }
     ]
   },
+  "73": {
+    "id": "73",
+    "title": "Set Matrix Zeroes",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-27",
+    "added": "2026-04-27",
+    "history": []
+  },
   "76": {
     "id": "76",
     "title": "Minimum Window Substring",
