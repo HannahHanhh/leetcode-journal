@@ -2,10 +2,10 @@
   "1": {
     "id": "1",
     "title": "Two Sum",
-    "ef": 2.1799999999999997,
-    "reps": 0,
-    "interval": 1,
-    "due": "2026-04-23",
+    "ef": 2.3800000000000003,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-05-02",
     "added": "2026-04-22",
     "history": [
       {
@@ -14,16 +14,180 @@
         "ef": 2.18,
         "reps": 0,
         "interval": 1
+      },
+      {
+        "date": "2026-04-23",
+        "grade": 5,
+        "ef": 2.28,
+        "reps": 1,
+        "interval": 4
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.38,
+        "reps": 2,
+        "interval": 6
+      }
+    ]
+  },
+  "3": {
+    "id": "3",
+    "title": "Longest Substring Without Repeating Characters",
+    "ef": 2.2200000000000006,
+    "reps": 2,
+    "interval": 3,
+    "due": "2026-04-25",
+    "added": "2026-04-21",
+    "history": [
+      {
+        "date": "2026-04-21",
+        "grade": 3,
+        "ef": 2.36,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 3,
+        "ef": 2.22,
+        "reps": 2,
+        "interval": 3
+      }
+    ]
+  },
+  "11": {
+    "id": "11",
+    "title": "Container With Most Water",
+    "ef": 2.14,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-04-30",
+    "added": "2026-04-21",
+    "history": [
+      {
+        "date": "2026-04-21",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 3,
+        "ef": 2.04,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-24",
+        "grade": 5,
+        "ef": 2.14,
+        "reps": 2,
+        "interval": 6
+      }
+    ]
+  },
+  "15": {
+    "id": "15",
+    "title": "3Sum",
+    "ef": 1.82,
+    "reps": 2,
+    "interval": 4,
+    "due": "2026-04-30",
+    "added": "2026-04-21",
+    "history": [
+      {
+        "date": "2026-04-21",
+        "grade": 1,
+        "ef": 1.96,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 3,
+        "ef": 1.82,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 1.82,
+        "reps": 2,
+        "interval": 4
+      }
+    ]
+  },
+  "41": {
+    "id": "41",
+    "title": "First Missing Positive",
+    "ef": 2.3600000000000003,
+    "reps": 1,
+    "interval": 1,
+    "due": "2026-04-27",
+    "added": "2026-04-26",
+    "history": [
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 2.36,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
+  },
+  "42": {
+    "id": "42",
+    "title": "Trapping Rain Water",
+    "ef": 2.6,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-04-28",
+    "added": "2026-04-21",
+    "history": [
+      {
+        "date": "2026-04-21",
+        "grade": 4,
+        "ef": 2.5,
+        "reps": 1,
+        "interval": 3
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 5,
+        "ef": 2.6,
+        "reps": 2,
+        "interval": 6
+      }
+    ]
+  },
+  "48": {
+    "id": "48",
+    "title": "Rotate Image",
+    "ef": 2.5,
+    "reps": 1,
+    "interval": 3,
+    "due": "2026-04-30",
+    "added": "2026-04-27",
+    "history": [
+      {
+        "date": "2026-04-27",
+        "grade": 4,
+        "ef": 2.5,
+        "reps": 1,
+        "interval": 3
       }
     ]
   },
   "49": {
     "id": "49",
     "title": "Group Anagrams",
-    "ef": 2.1799999999999997,
-    "reps": 0,
+    "ef": 2.04,
+    "reps": 1,
     "interval": 1,
-    "due": "2026-04-23",
+    "due": "2026-04-27",
     "added": "2026-04-22",
     "history": [
       {
@@ -31,6 +195,138 @@
         "grade": 2,
         "ef": 2.18,
         "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 2.04,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
+  },
+  "53": {
+    "id": "53",
+    "title": "Maximum Subarray",
+    "ef": 2.2800000000000002,
+    "reps": 1,
+    "interval": 4,
+    "due": "2026-04-30",
+    "added": "2026-04-23",
+    "history": [
+      {
+        "date": "2026-04-23",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.28,
+        "reps": 1,
+        "interval": 4
+      }
+    ]
+  },
+  "54": {
+    "id": "54",
+    "title": "Spiral Matrix",
+    "ef": 1.7000000000000002,
+    "reps": 0,
+    "interval": 1,
+    "due": "2026-04-28",
+    "added": "2026-04-27",
+    "history": [
+      {
+        "date": "2026-04-27",
+        "grade": 0,
+        "ef": 1.7,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
+  },
+  "56": {
+    "id": "56",
+    "title": "Merge Intervals",
+    "ef": 2.04,
+    "reps": 2,
+    "interval": 4,
+    "due": "2026-04-30",
+    "added": "2026-04-26",
+    "history": [
+      {
+        "date": "2026-04-26",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 2.04,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 2.04,
+        "reps": 2,
+        "interval": 4
+      }
+    ]
+  },
+  "73": {
+    "id": "73",
+    "title": "Set Matrix Zeroes",
+    "ef": 1.8600000000000003,
+    "reps": 0,
+    "interval": 1,
+    "due": "2026-04-28",
+    "added": "2026-04-27",
+    "history": [
+      {
+        "date": "2026-04-27",
+        "grade": 2,
+        "ef": 2.18,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-27",
+        "grade": 2,
+        "ef": 1.86,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
+  },
+  "76": {
+    "id": "76",
+    "title": "Minimum Window Substring",
+    "ef": 1.82,
+    "reps": 1,
+    "interval": 1,
+    "due": "2026-04-27",
+    "added": "2026-04-22",
+    "history": [
+      {
+        "date": "2026-04-22",
+        "grade": 1,
+        "ef": 1.96,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 1.82,
+        "reps": 1,
         "interval": 1
       }
     ]
@@ -38,10 +334,10 @@
   "128": {
     "id": "128",
     "title": "Longest Consecutive Sequence",
-    "ef": 2.1799999999999997,
-    "reps": 0,
+    "ef": 2.04,
+    "reps": 1,
     "interval": 1,
-    "due": "2026-04-23",
+    "due": "2026-04-27",
     "added": "2026-04-22",
     "history": [
       {
@@ -50,6 +346,184 @@
         "ef": 2.18,
         "reps": 0,
         "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 2.04,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
+  },
+  "189": {
+    "id": "189",
+    "title": "Rotate Array",
+    "ef": 2.6,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-05-02",
+    "added": "2026-04-26",
+    "history": [
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 2.5,
+        "reps": 1,
+        "interval": 3
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.6,
+        "reps": 2,
+        "interval": 6
+      }
+    ]
+  },
+  "238": {
+    "id": "238",
+    "title": "Product of Array Except Self",
+    "ef": 2.8000000000000003,
+    "reps": 3,
+    "interval": 16,
+    "due": "2026-05-12",
+    "added": "2026-04-26",
+    "history": [
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.6,
+        "reps": 1,
+        "interval": 4
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.7,
+        "reps": 2,
+        "interval": 6
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.8,
+        "reps": 3,
+        "interval": 16
+      }
+    ]
+  },
+  "239": {
+    "id": "239",
+    "title": "Sliding Window Maximum",
+    "ef": 1.82,
+    "reps": 1,
+    "interval": 1,
+    "due": "2026-04-27",
+    "added": "2026-04-22",
+    "history": [
+      {
+        "date": "2026-04-22",
+        "grade": 1,
+        "ef": 1.96,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 3,
+        "ef": 1.82,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
+  },
+  "283": {
+    "id": "283",
+    "title": "Move Zeroes",
+    "ef": 2.080000000000001,
+    "reps": 3,
+    "interval": 7,
+    "due": "2026-04-28",
+    "added": "2026-04-21",
+    "history": [
+      {
+        "date": "2026-04-21",
+        "grade": 3,
+        "ef": 2.36,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-21",
+        "grade": 3,
+        "ef": 2.22,
+        "reps": 2,
+        "interval": 3
+      },
+      {
+        "date": "2026-04-21",
+        "grade": 3,
+        "ef": 2.08,
+        "reps": 3,
+        "interval": 7
+      }
+    ]
+  },
+  "438": {
+    "id": "438",
+    "title": "Find All Anagrams in a String",
+    "ef": 1.82,
+    "reps": 2,
+    "interval": 4,
+    "due": "2026-04-30",
+    "added": "2026-04-21",
+    "history": [
+      {
+        "date": "2026-04-21",
+        "grade": 1,
+        "ef": 1.96,
+        "reps": 0,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-22",
+        "grade": 3,
+        "ef": 1.82,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 1.82,
+        "reps": 2,
+        "interval": 4
+      }
+    ]
+  },
+  "560": {
+    "id": "560",
+    "title": "Subarray Sum Equals K",
+    "ef": 2.3600000000000003,
+    "reps": 2,
+    "interval": 4,
+    "due": "2026-04-30",
+    "added": "2026-04-22",
+    "history": [
+      {
+        "date": "2026-04-22",
+        "grade": 3,
+        "ef": 2.36,
+        "reps": 1,
+        "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 2.36,
+        "reps": 2,
+        "interval": 4
       }
     ]
   }

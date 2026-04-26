@@ -10,14 +10,15 @@ Commands:
   review.py stats              Show overall progress.
   review.py list               List every tracked problem with state.
 
-SM-2 algorithm (Piotr Wozniak, 1987):
+SM-2 algorithm (Anki-style variant):
   - Each item has: repetitions n, easiness factor EF (>= 1.3), interval I (days).
   - After a grade q in [0..5]:
       if q < 3:  n = 0, I = 1                (failure: restart repetitions)
-      else:      n += 1
-                 if n == 1: I = 1
-                 elif n == 2: I = 6
-                 else:        I = round(I_prev * EF)
+      else:      based on reps BEFORE incrementing,
+                   reps=0:  q=3->1d  q=4->3d  q=5->4d
+                   reps=1:  q=3->3d  q=4->4d  q=5->6d
+                   reps>=2: I = round(I_prev * EF)
+                 then n += 1
       EF := max(1.3, EF + (0.1 - (5-q)*(0.08 + (5-q)*0.02)))
       (EF is updated on every grade, including failures.)
 """
@@ -36,6 +37,12 @@ SCHEDULE = ROOT / "review" / "schedule.json"
 
 DEFAULT_EF = 2.5
 MIN_EF = 1.3
+
+# (reps_before_pass, q) -> interval in days
+ANKI_FIRST_TWO = {
+    (0, 3): 1, (0, 4): 3, (0, 5): 4,
+    (1, 3): 3, (1, 4): 4, (1, 5): 6,
+}
 
 
 @dataclass
@@ -56,13 +63,11 @@ class Card:
             self.reps = 0
             self.interval = 1
         else:
-            self.reps += 1
-            if self.reps == 1:
-                self.interval = 1
-            elif self.reps == 2:
-                self.interval = 6
+            if self.reps < 2:
+                self.interval = ANKI_FIRST_TWO[(self.reps, q)]
             else:
                 self.interval = max(1, round(self.interval * self.ef))
+            self.reps += 1
         self.ef = max(MIN_EF, self.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)))
         self.due = (today + timedelta(days=self.interval)).isoformat()
         self.history.append({

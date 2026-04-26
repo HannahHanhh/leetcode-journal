@@ -2,7 +2,7 @@
   "1": {
     "id": "1",
     "title": "Two Sum",
-    "ef": 2.38,
+    "ef": 2.3800000000000003,
     "reps": 2,
     "interval": 6,
     "due": "2026-05-02",
@@ -20,7 +20,7 @@
         "grade": 5,
         "ef": 2.28,
         "reps": 1,
-        "interval": 1
+        "interval": 4
       },
       {
         "date": "2026-04-26",
@@ -34,10 +34,10 @@
   "3": {
     "id": "3",
     "title": "Longest Substring Without Repeating Characters",
-    "ef": 2.2199999999999998,
+    "ef": 2.2200000000000006,
     "reps": 2,
-    "interval": 6,
-    "due": "2026-04-28",
+    "interval": 3,
+    "due": "2026-04-25",
     "added": "2026-04-21",
     "history": [
       {
@@ -52,14 +52,14 @@
         "grade": 3,
         "ef": 2.22,
         "reps": 2,
-        "interval": 6
+        "interval": 3
       }
     ]
   },
   "11": {
     "id": "11",
     "title": "Container With Most Water",
-    "ef": 2.1399999999999997,
+    "ef": 2.14,
     "reps": 2,
     "interval": 6,
     "due": "2026-04-30",
@@ -93,8 +93,8 @@
     "title": "3Sum",
     "ef": 1.82,
     "reps": 2,
-    "interval": 6,
-    "due": "2026-05-02",
+    "interval": 4,
+    "due": "2026-04-30",
     "added": "2026-04-21",
     "history": [
       {
@@ -116,14 +116,14 @@
         "grade": 4,
         "ef": 1.82,
         "reps": 2,
-        "interval": 6
+        "interval": 4
       }
     ]
   },
   "41": {
     "id": "41",
     "title": "First Missing Positive",
-    "ef": 2.36,
+    "ef": 2.3600000000000003,
     "reps": 1,
     "interval": 1,
     "due": "2026-04-27",
@@ -152,7 +152,7 @@
         "grade": 4,
         "ef": 2.5,
         "reps": 1,
-        "interval": 1
+        "interval": 3
       },
       {
         "date": "2026-04-22",
@@ -168,8 +168,8 @@
     "title": "Rotate Image",
     "ef": 2.5,
     "reps": 1,
-    "interval": 1,
-    "due": "2026-04-28",
+    "interval": 3,
+    "due": "2026-04-30",
     "added": "2026-04-27",
     "history": [
       {
@@ -177,14 +177,14 @@
         "grade": 4,
         "ef": 2.5,
         "reps": 1,
-        "interval": 1
+        "interval": 3
       }
     ]
   },
   "49": {
     "id": "49",
     "title": "Group Anagrams",
-    "ef": 2.0399999999999996,
+    "ef": 2.04,
     "reps": 1,
     "interval": 1,
     "due": "2026-04-27",
@@ -209,10 +209,10 @@
   "53": {
     "id": "53",
     "title": "Maximum Subarray",
-    "ef": 2.28,
+    "ef": 2.2800000000000002,
     "reps": 1,
-    "interval": 1,
-    "due": "2026-04-27",
+    "interval": 4,
+    "due": "2026-04-30",
     "added": "2026-04-23",
     "history": [
       {
@@ -227,7 +227,7 @@
         "grade": 5,
         "ef": 2.28,
         "reps": 1,
-        "interval": 1
+        "interval": 4
       }
     ]
   },
@@ -252,10 +252,10 @@
   "56": {
     "id": "56",
     "title": "Merge Intervals",
-    "ef": 2.0399999999999996,
+    "ef": 2.04,
     "reps": 2,
-    "interval": 6,
-    "due": "2026-05-02",
+    "interval": 4,
+    "due": "2026-04-30",
     "added": "2026-04-26",
     "history": [
       {
@@ -277,14 +277,14 @@
         "grade": 4,
         "ef": 2.04,
         "reps": 2,
-        "interval": 6
+        "interval": 4
       }
     ]
   },
   "73": {
     "id": "73",
     "title": "Set Matrix Zeroes",
-    "ef": 1.8599999999999997,
+    "ef": 1.8600000000000003,
     "reps": 0,
     "interval": 1,
     "due": "2026-04-28",
@@ -334,7 +334,7 @@
   "128": {
     "id": "128",
     "title": "Longest Consecutive Sequence",
-    "ef": 2.0399999999999996,
+    "ef": 2.04,
     "reps": 1,
     "interval": 1,
     "due": "2026-04-27",
@@ -370,7 +370,7 @@
         "grade": 4,
         "ef": 2.5,
         "reps": 1,
-        "interval": 1
+        "interval": 3
       },
       {
         "date": "2026-04-26",
@@ -395,7 +395,7 @@
         "grade": 5,
         "ef": 2.6,
         "reps": 1,
-        "interval": 1
+        "interval": 4
       },
       {
         "date": "2026-04-26",
@@ -459,10 +459,10 @@
   "283": {
     "id": "283",
     "title": "Move Zeroes",
-    "ef": 2.0799999999999996,
+    "ef": 2.080000000000001,
     "reps": 3,
-    "interval": 13,
-    "due": "2026-05-04",
+    "interval": 7,
+    "due": "2026-04-28",
     "added": "2026-04-21",
     "history": [
       {
@@ -477,14 +477,14 @@
         "grade": 3,
         "ef": 2.22,
         "reps": 2,
-        "interval": 6
+        "interval": 3
       },
       {
         "date": "2026-04-21",
         "grade": 3,
         "ef": 2.08,
         "reps": 3,
-        "interval": 13
+        "interval": 7
       }
     ]
   },
@@ -493,8 +493,8 @@
     "title": "Find All Anagrams in a String",
     "ef": 1.82,
     "reps": 2,
-    "interval": 6,
-    "due": "2026-05-02",
+    "interval": 4,
+    "due": "2026-04-30",
     "added": "2026-04-21",
     "history": [
       {
@@ -516,17 +516,17 @@
         "grade": 4,
         "ef": 1.82,
         "reps": 2,
-        "interval": 6
+        "interval": 4
       }
     ]
   },
   "560": {
     "id": "560",
     "title": "Subarray Sum Equals K",
-    "ef": 2.36,
+    "ef": 2.3600000000000003,
     "reps": 2,
-    "interval": 6,
-    "due": "2026-05-02",
+    "interval": 4,
+    "due": "2026-04-30",
     "added": "2026-04-22",
     "history": [
       {
@@ -541,7 +541,7 @@
         "grade": 4,
         "ef": 2.36,
         "reps": 2,
-        "interval": 6
+        "interval": 4
       }
     ]
   }
