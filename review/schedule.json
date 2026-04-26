@@ -167,11 +167,19 @@
     "id": "48",
     "title": "Rotate Image",
     "ef": 2.5,
-    "reps": 0,
-    "interval": 0,
-    "due": "2026-04-27",
+    "reps": 1,
+    "interval": 1,
+    "due": "2026-04-28",
     "added": "2026-04-27",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-27",
+        "grade": 4,
+        "ef": 2.5,
+        "reps": 1,
+        "interval": 1
+      }
+    ]
   },
   "49": {
     "id": "49",
