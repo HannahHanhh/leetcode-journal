@@ -499,7 +499,11 @@ footer a { color: var(--text-muted); }
   user-select: none;
 }
 .grades.has-last .grade:not(.last) { display: none; }
-.grades:hover .grade { display: inline-flex; align-items: center; justify-content: center; }
+.grades.has-last:hover .grade:not(.last) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 .grades:hover .grade-trigger { display: none; }
 .grade {
   position: relative;
