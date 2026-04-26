@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeetCode Journal</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2337352f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ELJ%3C/text%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=12" />
+<link rel="stylesheet" href="styles.css?v=13" />
 </head>
 <body>
 <div class="container" id="app">
@@ -35,6 +35,11 @@
 
   <div class="layout">
     <main class="layout-main">
+      <details class="collapsible-section" id="today-section" open>
+        <summary><h2>今日复习 <span class="collapsible-count" id="today-count"></span></h2></summary>
+        <div class="queue" id="today-list"></div>
+      </details>
+
       <section>
         <h2>热题 100 · 按专题</h2>
         <div id="topics"></div>
@@ -57,11 +62,6 @@
           <span class="heat-day" data-level="4"></span>
           More
         </div>
-      </section>
-
-      <section>
-        <h2>今日复习</h2>
-        <div class="queue" id="today-list"></div>
       </section>
 
       <section>
@@ -392,6 +392,8 @@ function renderToday() {
     .filter(c => c.due && c.due <= t)
     .sort((a, b) => a.due.localeCompare(b.due));
   const root = $("today-list");
+  const countEl = $("today-count");
+  if (countEl) countEl.textContent = due.length ? `· ${due.length} 道` : "· 无";
   if (due.length === 0) {
     root.innerHTML = '<div class="empty">今天没有待复习的题 ✨</div>';
     return;

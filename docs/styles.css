@@ -191,6 +191,34 @@ h2 {
   padding: 12px 0;
 }
 
+/* Collapsible section wrapper that mimics <section> styling */
+.collapsible-section { margin: 32px 0; }
+.collapsible-section > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+.collapsible-section > summary::-webkit-details-marker { display: none; }
+.collapsible-section > summary > h2 {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.collapsible-section > summary > h2::before {
+  content: "›";
+  display: inline-block;
+  color: var(--text-faint);
+  font-weight: 400;
+  transition: transform 0.15s;
+}
+.collapsible-section[open] > summary > h2::before { transform: rotate(90deg); }
+.collapsible-count {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
 /* Narrow sidebar: stack card contents into rows */
 .layout-side .card {
   display: grid;
