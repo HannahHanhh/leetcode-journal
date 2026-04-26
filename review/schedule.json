@@ -438,6 +438,16 @@
       }
     ]
   },
+  "240": {
+    "id": "240",
+    "title": "Search a 2D Matrix II",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-27",
+    "added": "2026-04-27",
+    "history": []
+  },
   "283": {
     "id": "283",
     "title": "Move Zeroes",
