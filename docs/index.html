@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeetCode Journal</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2337352f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ELJ%3C/text%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=3" />
+<link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
 <div class="container" id="app">
@@ -33,41 +33,47 @@
     </div>
   </section>
 
-  <section>
-    <h2>今日复习</h2>
-    <div class="queue" id="today-list"></div>
-  </section>
+  <div class="layout">
+    <main class="layout-main">
+      <section>
+        <h2>热题 100 · 按专题</h2>
+        <div id="topics"></div>
+      </section>
+    </main>
 
-  <section>
-    <h2>活动热力图 <span style="font-weight:400;color:var(--text-muted);font-size:13px;">· 过去 26 周</span></h2>
-    <div class="heatmap-wrap">
-      <div class="heatmap-months" id="heatmap-months"></div>
-      <div class="heatmap" id="heatmap"></div>
-    </div>
-    <div class="heat-legend">
-      Less
-      <span class="heat-day" data-level="0"></span>
-      <span class="heat-day" data-level="1"></span>
-      <span class="heat-day" data-level="2"></span>
-      <span class="heat-day" data-level="3"></span>
-      <span class="heat-day" data-level="4"></span>
-      More
-    </div>
-  </section>
+    <aside class="layout-side">
+      <section>
+        <h2>活动热力图 <span style="font-weight:400;color:var(--text-muted);font-size:13px;">· 过去 26 周</span></h2>
+        <div class="heatmap-wrap">
+          <div class="heatmap-months" id="heatmap-months"></div>
+          <div class="heatmap" id="heatmap"></div>
+        </div>
+        <div class="heat-legend">
+          Less
+          <span class="heat-day" data-level="0"></span>
+          <span class="heat-day" data-level="1"></span>
+          <span class="heat-day" data-level="2"></span>
+          <span class="heat-day" data-level="3"></span>
+          <span class="heat-day" data-level="4"></span>
+          More
+        </div>
+      </section>
 
-  <section>
-    <h2>EF 分布</h2>
-    <div class="ef-bars" id="ef-bars"></div>
-    <div class="ef-labels">
-      <span>&lt;1.5</span><span>1.5-1.8</span><span>1.8-2.1</span>
-      <span>2.1-2.4</span><span>2.4-2.7</span><span>≥2.7</span>
-    </div>
-  </section>
+      <section>
+        <h2>今日复习</h2>
+        <div class="queue" id="today-list"></div>
+      </section>
 
-  <section>
-    <h2>热题 100 · 按专题</h2>
-    <div id="topics"></div>
-  </section>
+      <section>
+        <h2>EF 分布</h2>
+        <div class="ef-bars" id="ef-bars"></div>
+        <div class="ef-labels">
+          <span>&lt;1.5</span><span>1.5-1.8</span><span>1.8-2.1</span>
+          <span>2.1-2.4</span><span>2.4-2.7</span><span>≥2.7</span>
+        </div>
+      </section>
+    </aside>
+  </div>
 
   <footer>
     数据来源 <a href="https://github.com/HannahHanhh/leetcode-journal" target="_blank">HannahHanhh/leetcode-journal</a> ·

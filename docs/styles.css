@@ -34,9 +34,29 @@ body {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 48px 56px 120px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 40px;
+  align-items: start;
+}
+.layout-main { min-width: 0; }
+.layout-side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 24px;
+}
+.layout-side section { margin: 0; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .layout-side { position: static; }
 }
 
 header h1 {
