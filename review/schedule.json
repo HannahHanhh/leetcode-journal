@@ -213,6 +213,16 @@
       }
     ]
   },
+  "54": {
+    "id": "54",
+    "title": "Spiral Matrix",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-27",
+    "added": "2026-04-27",
+    "history": []
+  },
   "56": {
     "id": "56",
     "title": "Merge Intervals",
