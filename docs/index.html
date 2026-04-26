@@ -456,22 +456,14 @@ function renderEFBars() {
     </div>`).join("");
 }
 
-// Remember which topic panels the user has open across re-renders.
-// Defaults to "open if any problem is tracked" the first time we render.
+// Remember which topic panels the user has opened during this page session.
+// All panels start collapsed on page load.
 const topicOpen = {};
-let topicOpenInit = false;
 
 function renderTopics() {
-  if (!topicOpenInit) {
-    for (const t of hot100) {
-      const trackedCount = t.problems.filter(p => schedule[p.id]).length;
-      topicOpen[t.name] = trackedCount > 0;
-    }
-    topicOpenInit = true;
-  }
   $("topics").innerHTML = hot100.map(topic => {
     const tracked = topic.problems.filter(p => schedule[p.id]).length;
-    const open = topicOpen[topic.name];
+    const open = !!topicOpen[topic.name];
     const items = topic.problems.map(p => {
       const card = schedule[p.id];
       const done = !!card;
