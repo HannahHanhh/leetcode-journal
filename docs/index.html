@@ -481,8 +481,9 @@ function renderTopics() {
     const items = topic.problems.map(p => {
       const card = schedule[p.id];
       const done = !!card;
+      const shortDue = card ? card.due.slice(5) : "";
       const right = done
-        ? `<span class="status">reps ${card.reps} · next ${card.due}</span>${gradeBtns(p.id)}${removeBtn(p.id)}`
+        ? `<span class="status">reps ${card.reps} · ${shortDue}</span>${gradeBtns(p.id)}${removeBtn(p.id)}`
         : `<button class="add-btn" data-add="${p.id}" data-title="${p.title.replace(/"/g, "&quot;")}">+ 加入调度</button>`;
       const cn = p.title_cn || p.title;
       const diffLetter = p.difficulty.charAt(0).toUpperCase();
