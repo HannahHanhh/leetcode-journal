@@ -399,10 +399,10 @@ a:hover .title-cn { text-decoration: underline !important; }
   min-height: 2px;
   position: relative;
 }
-.ef-bar.ef-stuck    { background: var(--red); }
-.ef-bar.ef-tough    { background: #f0a648; }
-.ef-bar.ef-learning { background: var(--yellow); }
-.ef-bar.ef-mastered { background: var(--green); }
+.ef-bar.ef-stuck    { background: #fdebec; box-shadow: inset 0 -3px 0 var(--red); }
+.ef-bar.ef-tough    { background: #fbeede; box-shadow: inset 0 -3px 0 #c97a2b; }
+.ef-bar.ef-learning { background: #fbf3e0; box-shadow: inset 0 -3px 0 var(--yellow); }
+.ef-bar.ef-mastered { background: #e7f3ec; box-shadow: inset 0 -3px 0 var(--green); }
 .ef-bar .count {
   position: absolute;
   top: -18px;
