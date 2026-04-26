@@ -277,6 +277,16 @@
       }
     ]
   },
+  "189": {
+    "id": "189",
+    "title": "Rotate Array",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-26",
+    "added": "2026-04-26",
+    "history": []
+  },
   "239": {
     "id": "239",
     "title": "Sliding Window Maximum",
