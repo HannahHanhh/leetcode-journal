@@ -478,15 +478,29 @@ footer a { color: var(--text-muted); }
 }
 .btn.primary:hover { opacity: 0.85; }
 
-/* Grade buttons — compact digits, tooltip on hover */
+/* Grade buttons — collapsed by default, expand strip on hover */
 .grades {
   display: inline-flex;
+  align-items: center;
   gap: 2px;
   background: var(--bg-subtle);
   padding: 2px;
   border-radius: 7px;
   border: 1px solid var(--border);
 }
+.grade-trigger {
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 0 8px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.grades.has-last .grade:not(.last) { display: none; }
+.grades:hover .grade { display: inline-flex; align-items: center; justify-content: center; }
+.grades:hover .grade-trigger { display: none; }
 .grade {
   position: relative;
   border: none;
