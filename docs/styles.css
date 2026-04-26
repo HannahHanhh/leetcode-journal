@@ -614,13 +614,15 @@ button.remove-btn:hover::before { opacity: 1; }
 .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
 
 /* Detail modal — wider, scrollable list */
-.modal-detail {
-  max-width: 640px;
+.modal.modal-detail {
+  width: 90%;
+  max-width: 720px;
   max-height: 80vh;
+  padding: 24px 24px 16px;
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 32px;
+  overflow: hidden;
 }
 .modal-close {
   position: absolute;
@@ -636,20 +638,29 @@ button.remove-btn:hover::before { opacity: 1; }
   line-height: 1;
   cursor: pointer;
   transition: all 0.1s;
+  z-index: 1;
 }
 .modal-close:hover { background: var(--bg-hover); color: var(--text); }
 
-.modal-detail h3 { margin-bottom: 16px; }
-.detail-list {
-  flex: 1;
-  overflow-y: auto;
-  margin: 0 -8px;
-  padding: 0 8px;
+.modal-detail h3 {
+  margin: 0 0 12px;
+  padding-right: 32px;
+  font-size: 16px;
+  flex-shrink: 0;
 }
-.detail-row {
+.detail-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+  margin: 0 -8px;
+  padding: 4px 8px;
+}
+.detail-row,
+.detail-row:visited,
+.detail-row:active {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   padding: 10px 8px;
   border-radius: 6px;
   text-decoration: none !important;
@@ -658,19 +669,37 @@ button.remove-btn:hover::before { opacity: 1; }
 }
 .detail-row:last-child { border-bottom: none; }
 .detail-row:hover { background: var(--bg-subtle); }
+.detail-row .title-cn,
+.detail-row .title-en {
+  text-decoration: none !important;
+}
+.detail-row:hover .title-cn { text-decoration: underline !important; }
+
 .detail-id {
   font-family: var(--mono);
   color: var(--text-faint);
-  width: 44px;
+  width: 40px;
   font-size: 12px;
   flex-shrink: 0;
+  text-align: right;
 }
 .detail-title {
   flex: 1 1 auto;
   min-width: 0;
+  overflow: hidden;
 }
-.detail-title .title-cn { font-size: 14px; }
-.detail-title .title-en { font-size: 11px; }
+.detail-title .title-cn {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.detail-title .title-en {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .detail-meta {
   font-family: var(--mono);
   font-size: 12px;
@@ -702,6 +731,7 @@ button.remove-btn:hover::before { opacity: 1; }
   font-weight: 600;
   font-family: var(--mono);
   font-size: 12px;
+  flex-shrink: 0;
 }
 .grade-pill.g-low { background: #fdebec; color: var(--red); }
 .grade-pill.g-mid { background: #fbf3e0; color: var(--yellow); }
