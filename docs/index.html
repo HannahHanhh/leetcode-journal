@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeetCode Journal</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2337352f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ELJ%3C/text%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=13" />
+<link rel="stylesheet" href="styles.css?v=14" />
 </head>
 <body>
 <div class="container" id="app">
@@ -62,6 +62,22 @@
           <span class="heat-day" data-level="4"></span>
           More
         </div>
+      </section>
+
+      <section>
+        <h2 class="cal-h">
+          <span id="cal-title">复习日历</span>
+          <span class="cal-nav">
+            <button class="cal-btn" id="cal-prev" aria-label="上月">‹</button>
+            <button class="cal-btn" id="cal-today" title="回到本月">·</button>
+            <button class="cal-btn" id="cal-next" aria-label="下月">›</button>
+          </span>
+        </h2>
+        <div class="cal-weekdays">
+          <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <p class="ef-hint">点击日期查看当天到期的题</p>
       </section>
 
       <section>
@@ -349,6 +365,7 @@ function render() {
   renderToday();
   renderHeatmap();
   renderEFBars();
+  renderCalendar();
   renderTopics();
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
   $("today-indicator").textContent = `今天 ${today()} · ${tz}`;
@@ -491,6 +508,88 @@ function renderEFBars() {
   $("ef-labels").innerHTML = tiers.map(t =>
     `<span title="${t.hint}">${t.label}</span>`
   ).join("");
+}
+
+// ---------- calendar ----------
+let calCursor = null; // first day of the displayed month, local Date
+function renderCalendar() {
+  if (!calCursor) {
+    const t = new Date();
+    calCursor = new Date(t.getFullYear(), t.getMonth(), 1);
+  }
+  const year = calCursor.getFullYear();
+  const month = calCursor.getMonth();
+  $("cal-title").textContent = `${year} 年 ${month + 1} 月`;
+
+  // Build a map: date string -> count of cards due on that date
+  const dueByDate = {};
+  for (const c of Object.values(schedule)) {
+    if (!c.due) continue;
+    dueByDate[c.due] = (dueByDate[c.due] || 0) + 1;
+  }
+
+  const todayStr = today();
+  const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7; // Mon=0
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const cells = [];
+  for (let i = 0; i < firstWeekday; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+  while (cells.length % 7 !== 0) cells.push(null);
+
+  $("cal-grid").innerHTML = cells.map(d => {
+    if (d == null) return `<div class="cal-cell cal-empty"></div>`;
+    const ymd = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    const count = dueByDate[ymd] || 0;
+    const overdue = ymd < todayStr && count > 0;
+    const isToday = ymd === todayStr;
+    const cls = [
+      "cal-cell",
+      isToday ? "is-today" : "",
+      count > 0 ? "has-due" : "",
+      overdue ? "is-overdue" : "",
+    ].filter(Boolean).join(" ");
+    const dot = count > 0 ? `<span class="cal-dot">${count}</span>` : "";
+    return `<button class="${cls}" data-date="${ymd}" ${count === 0 ? "disabled" : ""}>
+      <span class="cal-num">${d}</span>${dot}
+    </button>`;
+  }).join("");
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#cal-prev")) {
+    calCursor.setMonth(calCursor.getMonth() - 1);
+    renderCalendar();
+    return;
+  }
+  if (e.target.closest("#cal-next")) {
+    calCursor.setMonth(calCursor.getMonth() + 1);
+    renderCalendar();
+    return;
+  }
+  if (e.target.closest("#cal-today")) {
+    calCursor = null;
+    renderCalendar();
+    return;
+  }
+  const cell = e.target.closest(".cal-cell[data-date]");
+  if (cell && !cell.disabled) {
+    openCalendarDate(cell.dataset.date);
+  }
+});
+
+function openCalendarDate(ymd) {
+  const cards = Object.values(schedule)
+    .filter(c => c.due === ymd)
+    .sort((a, b) => Number(a.id) - Number(b.id));
+  $("detail-title").textContent = `${ymd} · ${cards.length} 道`;
+  if (cards.length === 0) {
+    $("detail-list").innerHTML = `<div class="detail-empty">这天没有到期题目</div>`;
+  } else {
+    $("detail-list").innerHTML = cards.map(c =>
+      problemRow(c, `EF ${c.ef.toFixed(2)} · reps ${c.reps}`)
+    ).join("");
+  }
+  $("detail-modal-bg").classList.add("show");
 }
 
 // Remember which topic panels the user has opened during this page session.

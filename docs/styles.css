@@ -191,6 +191,90 @@ h2 {
   padding: 12px 0;
 }
 
+/* Calendar */
+.cal-h {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.cal-nav {
+  display: inline-flex;
+  gap: 2px;
+}
+.cal-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+.cal-btn:hover { background: var(--bg-subtle); color: var(--text); }
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin: 8px 0 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+  text-align: center;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.cal-cell {
+  aspect-ratio: 1 / 1;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 4px;
+  padding: 2px;
+  font-family: var(--font);
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  position: relative;
+}
+.cal-cell:disabled { cursor: default; color: var(--text-faint); }
+.cal-cell.cal-empty { visibility: hidden; }
+.cal-cell.has-due:not(:disabled):hover { background: var(--bg-subtle); }
+.cal-cell.is-today {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.cal-num { line-height: 1; }
+.cal-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+  border-radius: 7px;
+  background: #e7f3ec;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--mono);
+  line-height: 1;
+}
+.cal-cell.is-overdue .cal-dot {
+  background: #fdebec;
+  color: var(--red);
+}
+
 /* Collapsible section wrapper that mimics <section> styling */
 .collapsible-section { margin: 32px 0; }
 .collapsible-section > summary {
