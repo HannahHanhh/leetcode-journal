@@ -290,8 +290,9 @@ h2 {
   display: inline-flex;
   align-items: baseline;
   gap: 10px;
-  margin: 0 0 16px;
+  margin: 0;
 }
+.collapsible-section[open] > summary > h2 { margin-bottom: 16px; }
 .collapsible-section > summary > h2::before {
   content: "›";
   display: inline-block;
