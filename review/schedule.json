@@ -305,10 +305,10 @@
   "238": {
     "id": "238",
     "title": "Product of Array Except Self",
-    "ef": 2.7,
-    "reps": 2,
-    "interval": 6,
-    "due": "2026-05-02",
+    "ef": 2.8000000000000003,
+    "reps": 3,
+    "interval": 16,
+    "due": "2026-05-12",
     "added": "2026-04-26",
     "history": [
       {
@@ -324,6 +324,13 @@
         "ef": 2.7,
         "reps": 2,
         "interval": 6
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.8,
+        "reps": 3,
+        "interval": 16
       }
     ]
   },
