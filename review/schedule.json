@@ -280,10 +280,10 @@
   "189": {
     "id": "189",
     "title": "Rotate Array",
-    "ef": 2.5,
-    "reps": 1,
-    "interval": 1,
-    "due": "2026-04-27",
+    "ef": 2.6,
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-05-02",
     "added": "2026-04-26",
     "history": [
       {
@@ -292,6 +292,13 @@
         "ef": 2.5,
         "reps": 1,
         "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 5,
+        "ef": 2.6,
+        "reps": 2,
+        "interval": 6
       }
     ]
   },
