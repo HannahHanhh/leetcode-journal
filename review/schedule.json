@@ -199,9 +199,9 @@
     "id": "56",
     "title": "Merge Intervals",
     "ef": 2.0399999999999996,
-    "reps": 1,
-    "interval": 1,
-    "due": "2026-04-27",
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-05-02",
     "added": "2026-04-26",
     "history": [
       {
@@ -217,6 +217,13 @@
         "ef": 2.04,
         "reps": 1,
         "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 2.04,
+        "reps": 2,
+        "interval": 6
       }
     ]
   },
