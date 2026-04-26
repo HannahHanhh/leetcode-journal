@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeetCode Journal</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2337352f'/%3E%3Ctext x='16' y='22' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ELJ%3C/text%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=10" />
+<link rel="stylesheet" href="styles.css?v=11" />
 </head>
 <body>
 <div class="container" id="app">
@@ -65,12 +65,10 @@
       </section>
 
       <section>
-        <h2>EF 分布</h2>
+        <h2>掌握程度</h2>
         <div class="ef-bars" id="ef-bars"></div>
-        <div class="ef-labels">
-          <span>&lt;1.5</span><span>1.5-1.8</span><span>1.8-2.1</span>
-          <span>2.1-2.4</span><span>2.4-2.7</span><span>≥2.7</span>
-        </div>
+        <div class="ef-labels" id="ef-labels"></div>
+        <p class="ef-hint">基于 SM-2 难度系数（EF）：高 = 记得牢，低 = 容易忘</p>
       </section>
     </aside>
   </div>
@@ -471,18 +469,26 @@ function renderHeatmap() {
 }
 
 function renderEFBars() {
-  const buckets = [0, 0, 0, 0, 0, 0];
-  const bounds = [1.5, 1.8, 2.1, 2.4, 2.7];
+  // 4 semantic buckets keyed by EF; lower bound is inclusive.
+  const tiers = [
+    { key: "stuck",    label: "顽固", hint: "EF < 1.6 · 反复出错",    min: 0,    max: 1.6 },
+    { key: "tough",    label: "吃力", hint: "1.6 ≤ EF < 2.0 · 常出错", min: 1.6,  max: 2.0 },
+    { key: "learning", label: "在学", hint: "2.0 ≤ EF < 2.5 · 还不稳", min: 2.0,  max: 2.5 },
+    { key: "mastered", label: "熟练", hint: "EF ≥ 2.5 · 记得牢",       min: 2.5,  max: 99  },
+  ];
+  const counts = tiers.map(() => 0);
   for (const c of Object.values(schedule)) {
-    let i = 0;
-    while (i < bounds.length && c.ef >= bounds[i]) i++;
-    buckets[i]++;
+    const i = tiers.findIndex(t => c.ef >= t.min && c.ef < t.max);
+    if (i >= 0) counts[i]++;
   }
-  const max = Math.max(...buckets, 1);
-  $("ef-bars").innerHTML = buckets.map(n => `
-    <div class="ef-bar" style="height:${(n / max) * 100}%">
-      ${n > 0 ? `<div class="count">${n}</div>` : ""}
+  const max = Math.max(...counts, 1);
+  $("ef-bars").innerHTML = tiers.map((t, i) => `
+    <div class="ef-bar ef-${t.key}" style="height:${(counts[i] / max) * 100}%" title="${t.hint}">
+      ${counts[i] > 0 ? `<div class="count">${counts[i]}</div>` : ""}
     </div>`).join("");
+  $("ef-labels").innerHTML = tiers.map(t =>
+    `<span title="${t.hint}">${t.label}</span>`
+  ).join("");
 }
 
 // Remember which topic panels the user has opened during this page session.

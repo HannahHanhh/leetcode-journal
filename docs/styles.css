@@ -399,6 +399,10 @@ a:hover .title-cn { text-decoration: underline !important; }
   min-height: 2px;
   position: relative;
 }
+.ef-bar.ef-stuck    { background: var(--red); }
+.ef-bar.ef-tough    { background: #f0a648; }
+.ef-bar.ef-learning { background: var(--yellow); }
+.ef-bar.ef-mastered { background: var(--green); }
 .ef-bar .count {
   position: absolute;
   top: -18px;
@@ -410,12 +414,16 @@ a:hover .title-cn { text-decoration: underline !important; }
 .ef-labels {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
-  font-size: 11px;
+  margin-top: 6px;
+  font-size: 12px;
   color: var(--text-muted);
-  font-family: var(--mono);
 }
-.ef-labels span { flex: 1; text-align: center; }
+.ef-labels span { flex: 1; text-align: center; cursor: help; }
+.ef-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--text-faint);
+}
 
 footer {
   margin-top: 80px;
