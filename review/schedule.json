@@ -216,12 +216,20 @@
   "54": {
     "id": "54",
     "title": "Spiral Matrix",
-    "ef": 2.5,
+    "ef": 1.7000000000000002,
     "reps": 0,
-    "interval": 0,
-    "due": "2026-04-27",
+    "interval": 1,
+    "due": "2026-04-28",
     "added": "2026-04-27",
-    "history": []
+    "history": [
+      {
+        "date": "2026-04-27",
+        "grade": 0,
+        "ef": 1.7,
+        "reps": 0,
+        "interval": 1
+      }
+    ]
   },
   "56": {
     "id": "56",
