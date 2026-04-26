@@ -292,9 +292,9 @@
     "id": "438",
     "title": "Find All Anagrams in a String",
     "ef": 1.82,
-    "reps": 1,
-    "interval": 1,
-    "due": "2026-04-23",
+    "reps": 2,
+    "interval": 6,
+    "due": "2026-05-02",
     "added": "2026-04-21",
     "history": [
       {
@@ -310,6 +310,13 @@
         "ef": 1.82,
         "reps": 1,
         "interval": 1
+      },
+      {
+        "date": "2026-04-26",
+        "grade": 4,
+        "ef": 1.82,
+        "reps": 2,
+        "interval": 6
       }
     ]
   },
