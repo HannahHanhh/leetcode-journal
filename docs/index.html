@@ -435,7 +435,7 @@ function renderHeatmap() {
   const level = n => n === 0 ? 0 : n === 1 ? 1 : n <= 3 ? 2 : n <= 6 ? 3 : 4;
 
   // Month labels: place a label at the first week whose Sunday is in a new month.
-  const monthNames = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   let lastMonth = -1;
   const labels = weeks.map(wk => {
     const m = wk[0].date.getMonth();
