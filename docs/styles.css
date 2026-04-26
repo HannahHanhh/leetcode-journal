@@ -191,6 +191,46 @@ h2 {
   padding: 12px 0;
 }
 
+/* Narrow sidebar: stack card contents into rows */
+.layout-side .card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 12px;
+  row-gap: 8px;
+  align-items: center;
+}
+.layout-side .card .id {
+  grid-column: 1;
+  grid-row: 1;
+}
+.layout-side .card .title {
+  grid-column: 2 / -1;
+  grid-row: 1;
+}
+.layout-side .card .title-cn,
+.layout-side .card .title-en {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+.layout-side .card .meta {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+.layout-side .card .tag {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: start;
+}
+.layout-side .card .grades {
+  grid-column: 2 / -1;
+  grid-row: 3;
+  justify-self: end;
+  margin-left: 0 !important;
+}
+
 /* Heatmap */
 .heatmap-wrap { width: 100%; }
 .heatmap-months {
