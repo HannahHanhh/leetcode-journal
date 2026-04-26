@@ -195,6 +195,16 @@
       }
     ]
   },
+  "56": {
+    "id": "56",
+    "title": "Merge Intervals",
+    "ef": 2.5,
+    "reps": 0,
+    "interval": 0,
+    "due": "2026-04-26",
+    "added": "2026-04-26",
+    "history": []
+  },
   "76": {
     "id": "76",
     "title": "Minimum Window Substring",
